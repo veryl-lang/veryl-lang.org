@@ -21,5 +21,6 @@ juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [
     { title = "Book", link = "https://doc.veryl-lang.org/book"},
+    { title = "Playground", link = "https://doc.veryl-lang.org/playground"},
     { title = "Github", link = "https://github.com/veryl-lang"}
 ]

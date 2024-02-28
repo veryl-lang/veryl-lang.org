@@ -20,5 +20,6 @@ highlight_code = false
 juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [
+    { title = "Book", link = "https://doc.veryl-lang.org/book"},
     { title = "Github", link = "https://github.com/veryl-lang"}
 ]

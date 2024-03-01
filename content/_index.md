@@ -38,7 +38,7 @@ sort_by = "weight"
   Additionally Veryl have interoperability with SystemVerilog.
   Veryl can use SystemVerilog's module / interface / struct / enum in the code, and vice versa.
 
-## _Integrated Tools_
+## __Integrated Tools__
 
   Modern programming languages have development support tools like linter, formatter, and language server by default.
   Veryl will have them too from the beginning of development.

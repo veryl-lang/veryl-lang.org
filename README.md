@@ -2,9 +2,9 @@
 
 [![Actions Status](https://github.com/veryl-lang/veryl-lang.org/workflows/Deploy/badge.svg)](https://github.com/veryl-lang/veryl-lang.org/actions)
 
-This is the site of [Veryl](https://veryl-lang.org) Hardware Description Laugnage.
+This is the site of [Veryl](https://veryl-lang.org/) Hardware Description Laugnage.
 
-* https://veryl-lang.org
+* https://veryl-lang.org/
 
 ## License
 

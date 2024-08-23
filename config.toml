@@ -12,7 +12,12 @@ theme = "juice"
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = false
+highlight_code = true
+
+#highlight_theme = "visual-studio-dark"
+highlight_theme = "zenburn"
+
+extra_syntaxes_and_themes = ["syntaxes"]
 
 [extra]
 # Put all your custom variables here
@@ -21,5 +26,5 @@ juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [
     { title = "Playground", link = "https://doc.veryl-lang.org/playground"},
-    { title = "Github", link = "https://github.com/veryl-lang"}
+    { title = "Github", link = "https://github.com/veryl-lang/veryl"}
 ]

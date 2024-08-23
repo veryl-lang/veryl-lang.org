@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block head %}
+<!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<link rel="stylesheet" type="text/css" href="/juice-modified.css" />
+
+<link rel="shortcut icon" type="image/x-icon" href="/logo.svg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+
+  gtag('config', 'G-NXW2P6CCF3');
+</script>
+{% endblock head %}
+
+{% block title %}{{ section.title }} | {{ super() }} {% endblock title %}
+
+{% block header %}
+<header class="box-shadow">
+    {{ macros::render_header() }}
+</header>
+{% endblock header %}
+
+{% block content %}
+{% for page in section.pages %}
+<h1>{{ page.date }} <a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+{% endfor %}
+{% endblock content %}

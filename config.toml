@@ -22,6 +22,8 @@ extra_syntaxes_and_themes = ["syntaxes"]
 [extra]
 # Put all your custom variables here
 
+repository_url = "https://github.com/veryl-lang/veryl"
+
 juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [

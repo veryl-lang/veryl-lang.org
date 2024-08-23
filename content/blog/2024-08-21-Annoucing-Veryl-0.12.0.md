@@ -9,7 +9,7 @@ The latest version of Veryl can be downloaded from [release page](https://github
 
 # Breaking Changes
 
-## Forbid continuous casting
+## Forbid continuous casting {{ pr(id="887") }}
 
 Until Veryl 0.12.0, casting by `as` could be continuous, but it is forbidden by Veryl 0.12.0.
 If continuous casting is required, it can be achieved by inserting `()`.
@@ -21,9 +21,7 @@ assign a = x as u32 as i32;
 assign a = (x as u32) as i32;
 ```
 
-Refs: [https://github.com/veryl-lang/veryl/pull/887](https://github.com/veryl-lang/veryl/pull/887)
-
-## Change symbol of clock domain annotation
+## Change symbol of clock domain annotation {{ pr(id="883") }}
 
 Until Veryl 0.12.0, clock domain annotation used single quotation mark like `'x`.
 Veryl 0.12.0 changes it to backtick mark like `` `x ``.
@@ -35,11 +33,9 @@ var a: 'x clock;
 var a: `x clock;
 ```
 
-Refs: [https://github.com/veryl-lang/veryl/pull/883](https://github.com/veryl-lang/veryl/pull/883)
-
 # New Features
 
-## Expand `inside` operation
+## Expand `inside` operation {{ pr(id="873") }}
 
 Some EDA tools doesn't support `inside` operation.
 For these tools, `expand_inside_operation` configuration of `Veryl.toml` can be used like below:
@@ -65,9 +61,7 @@ assign a = ((1 + 2 / 3) ==? 0) ||
            ((1 + 2 / 3) >= 0 && (1 + 2 / 3) <= 10);
 ```
 
-Refs: [https://github.com/veryl-lang/veryl/pull/873](https://github.com/veryl-lang/veryl/pull/873)
-
-## Waveform dump support through `veryl test --wave`
+## Waveform dump support through `veryl test --wave` {{ pr(id="898") }}
 
 Waveform dump in integrated test is supported.
 If `--wave` option is specified at `veryl test`, `[test name].vcd` files are generated.
@@ -79,9 +73,7 @@ It can be configured through `waveform_target` in `Veryl.toml`.
 waveform_target = {type = "directory", path = "[dst dir]"}
 ```
 
-Refs: [https://github.com/veryl-lang/veryl/pull/898](https://github.com/veryl-lang/veryl/pull/898)
-
-## Cocotb support for integrated test
+## Cocotb support for integrated test {{ pr(id="899") }}
 
 As the way of `embed` and language specifier, `cocotb` and `py` are supported now.
 If `cocotb` is specified, the embeded code are interpreted as cocotb code and executed through external Python3 environment.
@@ -101,9 +93,7 @@ async def test(dut):
 
 ```
 
-Refs: [https://github.com/veryl-lang/veryl/pull/899](https://github.com/veryl-lang/veryl/pull/899)
-
-## Embed standard library into compiler
+## Embed standard library into compiler {{ pr(id="878") }}
 
 Standard library is embeded into Veryl compiler, and it can be used through `std` namespace.
 For example, `std::fifo` is FIFO module in standard library, and can be used without adding dependency like below.
@@ -129,5 +119,3 @@ module ModuleA {
 
 The public API of standard library is not stable until Veryl 1.0.
 If there is any idea or suggestion, please open issue or pull request at [https://github.com/veryl-lang/std](https://github.com/veryl-lang/std).
-
-Refs: [https://github.com/veryl-lang/veryl/pull/878](https://github.com/veryl-lang/veryl/pull/878)

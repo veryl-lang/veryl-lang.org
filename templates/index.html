@@ -1,27 +1,6 @@
 {% extends "juice/templates/index.html" %}
-{% block fonts %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-{% endblock fonts %}
 {% block head %}
-<!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
-<link rel="stylesheet" type="text/css" href="/style.css" />
-<link rel="stylesheet" type="text/css" href="/juice-modified.css" />
-<link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NXW2P6CCF3');
-</script>
-
-<meta property="og:url" content="https://github.com/veryl-lang/veryl" />
+<meta property="og:url" content="{{ section.permalink | safe }}" />
 <meta property="og:title" content="Veryl: A Modern Hardware Description Language" />
 <meta property="og:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
 <meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
@@ -31,7 +10,6 @@
 <meta name="twitter:title" content="Veryl: A Modern Hardware Description Language" />
 <meta name="twitter:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
 <meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
-
 {% endblock head %}
 {% block hero %}
 <script async defer src="https://buttons.github.io/buttons.js"></script>

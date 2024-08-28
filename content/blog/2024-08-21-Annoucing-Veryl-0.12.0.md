@@ -50,7 +50,7 @@ If the configuration is enabled, `inside` operations in the generated SystemVeri
 * Default
 
 ```veryl
-assign a = inside 1 + 2 / 3 {0, 0..10, 1..=10};
+assign a = ((1 + 2 / 3) inside {0, 0..10, 1..=10});
 ```
 
 * Expand

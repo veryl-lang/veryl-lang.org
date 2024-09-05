@@ -53,7 +53,7 @@ veryl +latest build
 # For Veryl Developer
 
 For Veryl developer, a special toolchain target `local` is prepared.
-If `veryup install local` is executed in your local Veryl repository, the built toolchain is installed as `local` toolchain.
+If `verylup install local` is executed in your local Veryl repository, the built toolchain is installed as `local` toolchain.
 `local` becomes the default toolchain if it exists.
 
 ```

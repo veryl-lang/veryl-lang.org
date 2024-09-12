@@ -8,9 +8,9 @@ scope: source.veryl
 
 contexts:
   main:
-    - match: \b(module|interface|package|function|modport|pub|enum|struct|embed|include|unsafe)\b
+    - match: \b(module|interface|package|function|modport|pub|enum|struct|embed|include|unsafe|proto)\b
       scope: keyword.declaration.veryl
-    - match: \b(param|local|always_ff|always_comb|assign|return|as|break|var|inst|let|import|export|initial|final)\b
+    - match: \b(param|local|const|always_ff|always_comb|assign|return|as|break|var|inst|let|import|export|initial|final)\b
       scope: keyword.other.veryl
     - match: \b(if|if_reset|else|for|in|case|switch|inside|outside|default|for|in|step|repeat)\b
       scope: keyword.control.veryl

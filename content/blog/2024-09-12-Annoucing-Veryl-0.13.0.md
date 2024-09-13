@@ -137,7 +137,7 @@ and the generated diagram is shown in documentation.
 ## Add `enum_encoding` attribute {{ pr(id="915") }}
 
 Encoding of variant values in enum can be specified through `enum_encoding` attribute.
-The available encodings are `sequential`, `one` and `gray`.
+The available encodings are `sequential`, `onehot` and `gray`.
 
 ```veryl
 #[enum_encoding(sequential)]

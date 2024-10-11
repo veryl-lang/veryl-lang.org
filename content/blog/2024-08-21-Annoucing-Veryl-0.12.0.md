@@ -119,3 +119,7 @@ module ModuleA {
 
 The public API of standard library is not stable until Veryl 1.0.
 If there is any idea or suggestion, please open issue or pull request at [https://github.com/veryl-lang/std](https://github.com/veryl-lang/std).
+
+# Other Changes
+
+Check out everything that changed in [Release v0.12.0](https://github.com/veryl-lang/veryl/releases/tag/v0.12.0).

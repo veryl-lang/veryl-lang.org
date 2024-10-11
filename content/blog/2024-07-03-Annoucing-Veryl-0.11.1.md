@@ -68,3 +68,7 @@ module ModuleA (
     );
 }
 ```
+
+# Other Changes
+
+Check out everything that changed in [Release v0.11.1](https://github.com/veryl-lang/veryl/releases/tag/v0.11.1).

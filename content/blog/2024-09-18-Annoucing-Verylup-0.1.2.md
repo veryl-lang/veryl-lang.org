@@ -72,3 +72,7 @@ verylup completion zsh veryl
 ```
 
 About the usage of generated scripts, please refer the documentation of each shell.
+
+# Other Changes
+
+Check out everything that changed in [Release v0.1.2](https://github.com/veryl-lang/verylup/releases/tag/v0.1.2).

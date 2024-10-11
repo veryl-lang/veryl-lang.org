@@ -29,3 +29,7 @@ verylup setup --offline --pkg veryl-x86_64-linux.zip
 ```
 
 If you want to update/install toolchain, `--pkg` specification is required as the same as setup.
+
+# Other Changes
+
+Check out everything that changed in [Release v0.1.3](https://github.com/veryl-lang/verylup/releases/tag/v0.1.3).

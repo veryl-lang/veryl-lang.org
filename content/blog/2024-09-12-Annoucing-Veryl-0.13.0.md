@@ -173,3 +173,7 @@ var a: A;
 let b: logic = a.
 //              | `x` and `y` will be listed as completion candidates at inputting this period
 ```
+
+# Other Changes
+
+Check out everything that changed in [Release v0.13.0](https://github.com/veryl-lang/veryl/releases/tag/v0.13.0).

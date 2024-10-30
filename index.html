@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/juice-modified.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/" />
+<meta property="og:title" content="Veryl: A Modern Hardware Description Language" />
+<meta property="og:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Veryl: A Modern Hardware Description Language" />
+<meta name="twitter:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+
+    <header class="pos-absolute" style="background-color: transparent">
+        
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl">Github</a>
+        
+    
+</nav>
+
+    </header>
+
+    <div class="hero">
+        
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<section class="text-center">
+    <h1 class="heading-text" style="font-size: 50px">
+        Veryl Hardware Description Language
+    </h1>
+    <h3 class="title-text">
+        A modern hardware description language designed as SystemVerilog alternative.
+    </h3>
+
+    <div>
+        <a class="github-button" href="https://github.com/veryl-lang/veryl" data-size="large" data-show-count="true"
+            aria-label="Star veryl-lang/veryl on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/sponsors/dalance" data-size="large" data-icon="octicon-heart"
+            aria-label="Sponsor @dalance on GitHub">Sponsor</a>
+    </div>
+</section>
+<img class="hero-image" style="width: 40%" src="https://veryl-lang.org/code.png">
+
+<div class="explore-more text" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+    Explore Veryl ⇩
+</div>
+<style>
+    .hero section {
+        padding: 0 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero section {
+            padding: 0 2rem;
+        }
+
+        .hero-image {
+            display: none
+        }
+    }
+</style>
+
+    </div>
+
+    
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#optimized-syntax">Optimized Syntax</a>
+        </div>
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#interoperability">Interoperability</a>
+        </div>
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#productivity">Productivity</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+            <div id="features" class="heading-text">Overview</div>
+            <p>Veryl is a hardware description language based on SystemVerilog, providing the following advantages:</p>
+<h2 id="optimized-syntax"><strong>Optimized Syntax</strong></h2>
+<p>Veryl adopts syntax optimized for logic design while being based on a familiar basic syntax for SystemVerilog experts.
+This optimization includes guarantees for synthesizability, ensuring consistency between simulation results, and providing numerous syntax simplifications for common idioms.
+This approach enables ease of learning, improves the reliability and efficiency of the design process, and facilitates ease of code writing.</p>
+<h2 id="interoperability"><strong>Interoperability</strong></h2>
+<p>Designed with interoperability with SystemVerilog in mind, Veryl allows smooth integration and partial replacement with existing SystemVerilog components and projects.
+Furthermore, SystemVerilog source code transpiled from Veryl retains high readability, enabling seamless integration and debugging.</p>
+<h2 id="productivity"><strong>Productivity</strong></h2>
+<p>Veryl comes with a rich set of development support tools, including package managers, build tools, real-time checkers compatible with major editors such as VSCode, Vim, Emacs, automatic completion, and automatic formatting.
+These tools accelerate the development process and significantly enhance productivity.</p>
+<p>With these features, Veryl provides powerful support for designers to efficiently and productively conduct high-quality hardware design.</p>
+
+            
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+        <small class="subtext">
+            <a href="https://huhu.io">Huhu.io</a> © 2021
+        </small>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

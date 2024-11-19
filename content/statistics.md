@@ -6,7 +6,7 @@ weight = 4
 
 # Projects on GitHub
 
-<div>
+<div class="chart-container" style="position: relative; height:40vh">
   <canvas id="discovered"></canvas>
 </div>
 
@@ -14,19 +14,19 @@ weight = 4
 
 ## Total
 
-<div>
+<div class="chart-container" style="position: relative; height:40vh">
   <canvas id="total_download"></canvas>
 </div>
 
 ## By Version
 
-<div>
+<div class="chart-container" style="position: relative; height:40vh">
   <canvas id="version_download"></canvas>
 </div>
 
 ## Platform
 
-<div>
+<div class="chart-container" style="position: relative; height:40vh">
   <canvas id="platform_download"></canvas>
 </div>
 
@@ -80,6 +80,7 @@ weight = 4
         }]
       },
       options: {
+        maintainAspectRatio: false,
         scales: {
           x: {
             type: 'time',
@@ -201,6 +202,7 @@ weight = 4
           datasets: datasets
         },
         options: {
+          maintainAspectRatio: false,
           scales: {
             x: {
               type: 'time',
@@ -228,6 +230,7 @@ weight = 4
           }]
         },
         options: {
+          maintainAspectRatio: false,
           scales: {
             x: {
               type: 'time',
@@ -273,7 +276,7 @@ weight = 4
           }]
         },
         options: {
-          responsive: false
+          maintainAspectRatio: false
         }
       }
 

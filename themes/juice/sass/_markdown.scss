@@ -16,7 +16,6 @@
 }
 
 .content code {
-  display: block;
   background-color: var(--code-background-color);
   color: var(--code-color);
   font-size: 1.0em;
@@ -26,16 +25,21 @@
   font-family: monospace;
 }
 
+.language-veryl {
+  display: block;
+}
+
+.language-verilog {
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
-  .content code {
-    display: block;
-    background-color: var(--code-background-color);
-    color: var(--code-color);
+  .language-veryl {
     font-size: 0.7em;
-    line-height: 1.2;
-    font-weight: normal;
-    padding: 0.25em 0.5em;
-    font-family: monospace;
+  }
+
+  .language-verilog {
+    font-size: 0.7em;
   }
 }
 

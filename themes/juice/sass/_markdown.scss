@@ -33,12 +33,20 @@
   display: block;
 }
 
+.language-toml {
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
   .language-veryl {
     font-size: 0.7em;
   }
 
   .language-verilog {
+    font-size: 0.7em;
+  }
+
+  .language-toml {
     font-size: 0.7em;
   }
 }

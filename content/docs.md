@@ -15,4 +15,4 @@ weight = 2
 * Naoya Hatta, Taichi Ishitani, Ryota Shioya.
   Veryl: A New Hardware Description Language as an Alternative to SystemVerilog.
   August 2024. In: The Design & Verification Conference (DVCon) Japan 2024.
-  [[PDF]](veryl_dvcon-jpn-2024.pdf) [[Slides]](veryl_dvcon-jpn-2024-slide.pdf)
+  [[PDF]](veryl_dvcon-jpn-2024.pdf) [[Slides]](veryl_dvcon-jpn-2024-slide.pdf) [[arXiv]](https://arxiv.org/abs/2411.12983)

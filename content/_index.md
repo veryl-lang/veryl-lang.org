@@ -149,7 +149,8 @@ Issues such as undefined, unused, or unassigned variables are notified in real-t
 In the following example, adding the `_` prefix to variables flagged as unused explicitly indicates their unused status, suppressing warnings.
 
 <div style="width:100px">
-  <img src="./img/diagnostics.gif">
+  <video src="./img/diagnostics.mp4" autoplay loop muted>
+  </video>
 </div>
 
 ## Auto formatting {#auto-formatting}
@@ -158,7 +159,8 @@ In addition to the automatic formatting feature integrated with the editor,
 formatting through the command line and formatting checks in CI are also possible.
 
 <div style="width:100px">
-  <img src="./img/format.gif">
+  <video src="./img/format.mp4" autoplay loop muted>
+  </video>
 </div>
 
 ## Integrated test {#integrated-test}

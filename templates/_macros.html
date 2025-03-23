@@ -23,5 +23,10 @@
         <a class="nav-item subtitle-text" href="{{ menu.link | safe }}">{{ menu.title }}</a>
         {% endfor %}
     {% endif %}
+    {% if config.extra.juice_extra_icon %}
+        {% for menu in config.extra.juice_extra_icon %}
+        <a class="nav-item subtitle-text" href="{{ menu.link | safe }}"><img src="{{ get_url(path=menu.icon) }}" alt="icon" height="20"></a>
+        {% endfor %}
+    {% endif %}
 </nav>
 {% endmacro render_header %}

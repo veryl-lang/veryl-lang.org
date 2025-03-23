@@ -30,5 +30,8 @@ juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [
     { title = "Playground", link = "https://doc.veryl-lang.org/playground"},
-    { title = "Github", link = "https://github.com/veryl-lang/veryl"}
+]
+juice_extra_icon = [
+    { icon = "github-mark-white.png", link = "https://github.com/veryl-lang/veryl"},
+    { icon = "Discord-Symbol-White.png", link = "https://discord.gg/MJZr9NufTT"}
 ]

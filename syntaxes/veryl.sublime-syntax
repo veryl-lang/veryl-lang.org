@@ -10,11 +10,11 @@ contexts:
   main:
     - match: \b(module|interface|package|function|modport|pub|enum|struct|embed|include|unsafe|proto)\b
       scope: keyword.declaration.veryl
-    - match: \b(param|local|const|always_ff|always_comb|assign|return|as|break|var|inst|let|import|export|initial|final)\b
+    - match: \b(param|local|const|always_ff|always_comb|assign|return|as|break|var|inst|let|import|export|initial|final|connect|alias)\b
       scope: keyword.other.veryl
     - match: \b(if|if_reset|else|for|in|case|switch|inside|outside|default|for|in|step|repeat)\b
       scope: keyword.control.veryl
-    - match: \b(clock|clock_posedge|clock_negedge|reset|reset_async_high|reset_async_low|reset_sync_high|reset_sync_low|logic|bit|tri|signed|u32|u64|i32|i64|f32|f64|string)\b
+    - match: \b(clock|clock_posedge|clock_negedge|reset|reset_async_high|reset_async_low|reset_sync_high|reset_sync_low|logic|bit|tri|signed|u32|u64|i32|i64|f32|f64|string|bool)\b
       scope: storage.type.veryl
     - match: \b(input|output|inout|ref)\b
       scope: storage.modifier.veryl

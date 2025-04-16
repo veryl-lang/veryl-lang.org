@@ -72,8 +72,8 @@ module ModuleA (
 ) {
     inst bus_if: InterfaceA;
 
-    connect mst_if <> bus_if0.slave;
-    connect slv_if <> bus_if0.master;
+    connect mst_if <> bus_if.slave;
+    connect slv_if <> bus_if.master;
 }
 ```
 

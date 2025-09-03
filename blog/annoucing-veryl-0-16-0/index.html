@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title>Announcing Veryl 0.16.0 |  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/" />
+<meta property="og:title" content="Announcing Veryl 0.16.0" />
+<meta property="og:description" content="The Veryl team has published a new release of Veryl, 0.16.0.
+Veryl is a new hardware descr…" />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Announcing Veryl 0.16.0" />
+<meta name="twitter:description" content="The Veryl team has published a new release of Veryl, 0.16.0.
+Veryl is a new hardware descr…" />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/statistics/">Statistics</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl"><img src="https://veryl-lang.org/github-mark-white.png" alt="icon" height="20"></a>
+        
+        <a class="nav-item subtitle-text" href="https://discord.gg/MJZr9NufTT"><img src="https://veryl-lang.org/Discord-Symbol-White.png" alt="icon" height="20"></a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#breaking-changes">Breaking Changes</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#keep-directory-hierarchy-for-target-type-directory"><small>- Keep directory hierarchy for target = {type = &quot;directory&quot;} </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#change-clock-domain-annotation-symbol-to"><small>- Change clock domain annotation symbol to &#x27; </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#unsupport-enum-struct-union-declarations-in-interface-declaration"><small>- Unsupport enum &#x2F; struct &#x2F; union declarations in interface declaration </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#typed-generic-boundary"><small>- Typed generic boundary </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#forbid-last-item-with-ifdef-in-comma-separated-list"><small>- Forbid last item with ifdef in comma-separated list </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#forbid-project-name-starting-with"><small>- Forbid project name starting with __ </small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#new-language-features">New Language Features</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#elsif-else-attribute"><small>- elsif &#x2F; else attribute </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#proto-alias-declaration"><small>- Proto alias declaration </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#modport-expansion"><small>- Modport expansion </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#skip-to-write-files-if-no-change"><small>- Skip to write files if no change </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#default-project-structure"><small>- Default project structure </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#interface-prototype"><small>- Interface prototype </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#u8-u16-i8-and-i16-fixed-types"><small>- u8, u16, i8 and i16 fixed types </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#use-modport-as-function-argument"><small>- Use modport as function argument </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#axi3-axi4-axi4-lite-interfaces-and-prototypes-in-veryl-standard-library"><small>- AXI3, AXI4, AXI4-Lite interfaces and prototypes in Veryl standard library </small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-16-0/#other-changes">Other Changes</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+<div class="heading-text">Announcing Veryl 0.16.0</div>
+<p>The Veryl team has published a new release of Veryl, 0.16.0.
+Veryl is a new hardware description language as an alternate to SystemVerilog.</p>
+<p>If you have a previous version of Veryl installed via <code>verylup</code>, you can get the latest version with:</p>
+<pre style="background-color:#393939;color:#dedede;"><code><span>$ verylup update
+</span></code></pre>
+<p>If you don't have it already, you can get <code>verylup</code> from <a href="https://github.com/veryl-lang/verylup/releases/latest">release page</a>.</p>
+<h1 id="breaking-changes">Breaking Changes</h1>
+<p>To migrate some syntax changes, <code>veryl migrate</code> can be used:</p>
+<details>
+<pre data-lang="console" style="background-color:#393939;color:#dedede;" class="language-console "><code class="language-console" data-lang="console"><span>// Check how changes will be applied
+</span><span>$ veryl migrate --check
+</span><span>
+</span><span>// Migrate
+</span><span>$ veryl migrate
+</span></code></pre>
+</details>
+<h2 id="keep-directory-hierarchy-for-target-type-directory">Keep directory hierarchy for <code>target = {type = "directory"}</code> <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1513">#1513</a>
+</h2>
+<p><code>target = {type = "directory"}</code> caused to break files which have the same name and belong different source directory, because it forces all output files to a single directory.
+To avoid this issue, the behaviour of this option is changed to keep directory hierarchy of source.</p>
+<h2 id="change-clock-domain-annotation-symbol-to">Change clock domain annotation symbol to <code>'</code> <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1517">#1517</a>
+</h2>
+<p>Clock domain annotation symbol was <code>`</code> by parser restriction.
+But it is changed to <code>'</code> as the same as Rust's lifetime annotation by improving parser implementation.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> Before
+</span><span>i_clk: </span><span style="color:#fffb9d;">input </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span style="color:#fffb9d;">clock</span><span>,
+</span><span>
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> After
+</span><span>i_clk: </span><span style="color:#fffb9d;">input</span><span> &#39;a </span><span style="color:#fffb9d;">clock</span><span>,
+</span></code></pre>
+<h2 id="unsupport-enum-struct-union-declarations-in-interface-declaration">Unsupport <code>enum</code> / <code>struct</code> / <code>union</code> declarations in interface declaration <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1521">#1521</a>
+</h2>
+<p><code>enum</code>, <code>struct</code> and <code>union</code> in interface declaration were removed because they can't be refered from the outside of the interface.
+If you use them, please move them to a package.</p>
+<h2 id="typed-generic-boundary">Typed generic boundary <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1548">#1548</a>
+</h2>
+<p><code>const</code> as generic boundary was removed, and typed generic boundary is introduced.
+This is because <code>const</code> can't express a boundary for <code>enum</code>.
+<code>veryl migrate</code> converts all <code>const</code> to <code>u32</code> boundary.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> Before
+</span><span style="color:#fed6af;">package </span><span>PkgA::&lt;X: </span><span style="color:#fed6af;">const</span><span>, Y: </span><span style="color:#fed6af;">const</span><span>&gt; {}
+</span><span>
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> After
+</span><span style="color:#fed6af;">package </span><span>PkgA::&lt;X: </span><span style="color:#fffb9d;">u32</span><span>, Y: EnumX&gt; {}
+</span></code></pre>
+<h2 id="forbid-last-item-with-ifdef-in-comma-separated-list">Forbid last item with ifdef in comma-separated list <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1572">#1572</a>
+</h2>
+<p>The last item with <code>ifdef</code> in comma-separated list becomes to be forbidden.
+This is because adjusting last comma by complex <code>ifdef</code> combination is difficult.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    a: </span><span style="color:#fffb9d;">input logic</span><span>,
+</span><span>    #[ifdef(B)] </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> this `ifdef` is forbidden
+</span><span>    b: </span><span style="color:#fffb9d;">input logic</span><span>,
+</span><span>) {}
+</span></code></pre>
+<h2 id="forbid-project-name-starting-with">Forbid project name starting with <code>__</code> <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1580">#1580</a>
+</h2>
+<p>A project name starting with <code>__</code> becomes to be forbidden, because it is used for Veryl compiler internally.</p>
+<pre data-lang="console" style="background-color:#393939;color:#dedede;" class="language-console "><code class="language-console" data-lang="console"><span>$ veryl new __a
+</span><span>Error:   × project name &quot;__a&quot; is reserved by system
+</span></code></pre>
+<h1 id="new-language-features">New Language Features</h1>
+<h2 id="elsif-else-attribute"><code>elsif</code> / <code>else</code> attribute <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1453">#1453</a>
+</h2>
+<p><code>elsif</code> and <code>else</code> attribute can be used with <code>ifdef</code> or <code>ifndef</code>.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">always_comb</span><span> {
+</span><span>    #[ifdef(DEFINE_A)]
+</span><span>    a = 1;
+</span><span>    #[elsif(DEFINE_B)]
+</span><span>    b = 1;
+</span><span>    #[</span><span style="color:#fed6af;">else</span><span>]
+</span><span>    c = 1;
+</span><span>}
+</span></code></pre>
+<h2 id="proto-alias-declaration">Proto alias declaration <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1473">#1473</a>
+</h2>
+<p><code>alias</code> can be used in proto declaration.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">proto package </span><span>ProtoPackageA {
+</span><span>    </span><span style="color:#fed6af;">alias module </span><span>InstModule: ProtoModuleA;
+</span><span>}
+</span><span style="color:#fed6af;">package </span><span>PackageA::&lt;M: ProtoModuleA&gt; </span><span style="color:#fed6af;">for </span><span>ProtoPackageA {
+</span><span>    </span><span style="color:#fed6af;">alias module </span><span>InstModule = M;
+</span><span>}
+</span></code></pre>
+<h2 id="modport-expansion">Modport expansion <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1512">#1512</a>
+</h2>
+<p>Some synthesis tools don't support <code>modport</code> as ports of the top module or boundary of hiererchical synthesis.
+For such cases, if <code>#[expand(modport)]</code> is specified, Veryl compiler expands <code>modport</code> of the module.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span>#[expand(</span><span style="color:#fed6af;">modport</span><span>)]
+</span><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    slv_if: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::slave ,
+</span><span>    mst_if: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::master,
+</span><span>) {}
+</span></code></pre>
+<h2 id="skip-to-write-files-if-no-change">Skip to write files if no change <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1518">#1518</a>
+</h2>
+<p>If the existing generated files have the same contents which Veryl compiler is trying to emit, writing files is skipped.
+By this change, the compatibility with timestamp based tools like GNU make is improved.</p>
+<h2 id="default-project-structure">Default project structure <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1531">#1531</a>
+</h2>
+<p>As the default project structure, <code>veryl new</code> will create the following file and directories.</p>
+<pre style="background-color:#393939;color:#dedede;"><code><span>.gitignore
+</span><span>Veryl.toml
+</span><span>src/
+</span><span>target/
+</span></code></pre>
+<h2 id="interface-prototype">Interface prototype <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1532">#1532</a>
+</h2>
+<p>Interface prototype becomes to be supported like below:</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">proto interface </span><span>InterfaceA {
+</span><span>  </span><span style="color:#fed6af;">function </span><span>FuncA(a: </span><span style="color:#fffb9d;">input logic</span><span>, b: </span><span style="color:#fffb9d;">input logic</span><span>) -&gt; </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span>
+</span><span>  </span><span style="color:#fed6af;">modport </span><span>mp {
+</span><span>    FuncA: </span><span style="color:#fed6af;">import</span><span>,
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<h2 id="u8-u16-i8-and-i16-fixed-types"><code>u8</code>, <code>u16</code>, <code>i8</code> and <code>i16</code> fixed types <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1537">#1537</a>
+</h2>
+<p><code>u8</code>, <code>u16</code>, <code>i8</code> and <code>i16</code> become to be supported as primitive types.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">let </span><span>a: </span><span style="color:#fffb9d;">u8</span><span>  = 0;
+</span><span style="color:#fed6af;">let </span><span>a: </span><span style="color:#fffb9d;">u16</span><span> = 0;
+</span><span style="color:#fed6af;">let </span><span>a: </span><span style="color:#fffb9d;">i8</span><span>  = 0;
+</span><span style="color:#fed6af;">let </span><span>a: </span><span style="color:#fffb9d;">i16</span><span> = 0;
+</span></code></pre>
+<h2 id="use-modport-as-function-argument">Use modport as function argument <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1554">#1554</a>
+</h2>
+<p>Now <code>modport</code> can be used as function argument.
+Veryl compiler expands these modport to separated variables.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">function </span><span>FunctionA (
+</span><span>    slv_if: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::slave ,
+</span><span>    mst_if: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::master,
+</span><span>) {}
+</span></code></pre>
+<h2 id="axi3-axi4-axi4-lite-interfaces-and-prototypes-in-veryl-standard-library">AXI3, AXI4, AXI4-Lite interfaces and prototypes in Veryl standard library <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1577">#1577</a>
+</h2>
+<p>Generic AXI3, AXI4, AXI4-Lite interfaces are added in Veryl standard library.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">alias package </span><span>axi3_pkg = $std::axi3_pkg::&lt;32, 4, 8&gt;;
+</span><span>
+</span><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    slv_if: </span><span style="color:#fed6af;">modport</span><span> $std::axi3_if::&lt;axi3_pkg&gt;::slave,
+</span><span>) {}
+</span></code></pre>
+<h1 id="other-changes">Other Changes</h1>
+<p>Check out everything that changed in <a href="https://github.com/veryl-lang/veryl/releases/tag/v0.16.0">Release v0.16.0</a>.</p>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

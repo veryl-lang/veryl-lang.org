@@ -702,13 +702,11 @@ end
 <td>
 
 ```veryl
-# module ModuleA {
 connect mst_if0 <> bus_if0.slave;
 
 always_comb {
     mst_if1 <> bus_if1.slave;
 }
-# }
 ```
 
 </td>

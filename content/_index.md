@@ -674,6 +674,47 @@ always_ff {
 </tr>
 </table>
 
+## `<>` operator {#connect-operator}
+
+`<>` operator can connect two interfaces. It simplifies SystemVerilog's interface connection requiring each member assignments.
+
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+always_comb begin
+    mst_if0.cmd   = bus_if0.cmd;
+    bus_if0.ready = mst_if0.ready;
+end
+
+always_comb begin
+    mst_if1.cmd   = bus_if1.cmd;
+    bus_if1.ready = mst_if1.ready;
+end
+```
+
+</td>
+<td>
+
+```veryl
+# module ModuleA {
+connect mst_if0 <> bus_if0.slave;
+
+always_comb {
+    mst_if1 <> bus_if1.slave;
+}
+# }
+```
+
+</td>
+</tr>
+</table>
+
 ## Named block {#named-block}
 
 You can define named blocks to limit the scope of variables.

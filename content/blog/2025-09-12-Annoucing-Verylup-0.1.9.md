@@ -1,12 +1,12 @@
 +++
-title = "Announcing Verylup 0.1.8"
+title = "Announcing Verylup 0.1.9"
 +++
 
-The Veryl team has published a new release of Verylup, 0.1.8.
+The Veryl team has published a new release of Verylup, 0.1.9.
 Verylup is the official toolchain installer of Veryl.
 It installs the latest Veryl toolchain and eases to update and switch the toolchains.
 
-If you have a previous version of Verylup installed, getting Verylup 0.1.8 is as easy as stopping any programs which may be using Verylup (e.g. closing your IDE) and running:
+If you have a previous version of Verylup installed, getting Verylup 0.1.9 is as easy as stopping any programs which may be using Verylup (e.g. closing your IDE) and running:
 
 ```
 verylup update
@@ -35,7 +35,16 @@ This behaviour causes a problem in cases like creating container image, in which
 To resolve the issue, `VERYLUP_HOME` environment variable can be used.
 If it is defined, verylup installs Veryl toolchains under the `VERYLUP_HOME` directory.
 
+## Add `toolchain` option for setup
+
+If you want to specify the toolchain at `verylup setup`, `--toolchain` option can be used.
+
+```
+verylup setup --toolchain 0.16.4
+verylup setup --toolchain nightly
+```
+
 
 # Other Changes
 
-Check out everything that changed in [Release v0.1.8](https://github.com/veryl-lang/verylup/releases/tag/v0.1.8).
+Check out everything that changed in [Release v0.1.9](https://github.com/veryl-lang/verylup/releases/tag/v0.1.9).

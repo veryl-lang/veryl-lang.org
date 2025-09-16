@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/" />
+<meta property="og:title" content="Veryl: A Modern Hardware Description Language" />
+<meta property="og:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Veryl: A Modern Hardware Description Language" />
+<meta name="twitter:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+
+    <header class="pos-absolute" style="background-color: transparent">
+        
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/statistics/">Statistics</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl"><img src="https://veryl-lang.org/github-mark-white.png" alt="icon" height="20"></a>
+        
+        <a class="nav-item subtitle-text" href="https://discord.gg/MJZr9NufTT"><img src="https://veryl-lang.org/Discord-Symbol-White.png" alt="icon" height="20"></a>
+        
+    
+</nav>
+
+    </header>
+
+    <div class="hero">
+        
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<section class="text-center">
+    <h1 class="heading-text" style="font-size: 50px">
+        Veryl Hardware Description Language
+    </h1>
+    <h3 class="title-text">
+        A modern hardware description language designed as SystemVerilog alternative.
+    </h3>
+
+    <div>
+        <a class="github-button" href="https://github.com/veryl-lang/veryl" data-size="large" data-show-count="true"
+            aria-label="Star veryl-lang/veryl on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/sponsors/dalance" data-size="large" data-icon="octicon-heart"
+            aria-label="Sponsor @dalance on GitHub">Sponsor</a>
+    </div>
+</section>
+<img class="hero-image" style="height: 80%" src="https://veryl-lang.org/code.png">
+
+<div class="explore-more text" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+    Explore Veryl ⇩
+</div>
+<style>
+    .hero section {
+        padding: 0 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .hero section {
+            padding: 0 2rem;
+        }
+
+        .hero-image {
+            display: none
+        }
+    }
+</style>
+
+    </div>
+
+    
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#concept">Concept</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#optimized-syntax"><small>- Optimized Syntax</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#interoperability"><small>- Interoperability</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#productivity"><small>- Productivity</small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#code-examples">Code Examples</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#module-definition"><small>- Module Definition</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#interface-definition"><small>- Interface Definition</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#package-definition"><small>- Package Definition</small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/#features">Features</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#real-time-diagnostics"><small>- Real-time diagnostics</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#auto-formatting"><small>- Auto formatting</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#integrated-test"><small>- Integrated test</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#dependency-management"><small>- Dependency management</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#generics"><small>- Generics</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#clock-domain-annotation"><small>- Clock Domain Annotation</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#trailing-comma"><small>- Trailing comma</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#abstraction-of-clock-and-reset"><small>- Abstraction of clock and reset</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#documentation-comment"><small>- Documentation comment</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#compound-assignment-operator-in-always_ff"><small>- Compound assignment operator in always_ff</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#individual-namespace-of-enum-variant"><small>- Individual namespace of enum variant</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#repeat-of-concatenation"><small>- repeat of concatenation</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#if--case-expression"><small>- if &#x2F; case expression</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#range-based-for--inside--outside"><small>- Range-based for &#x2F; inside &#x2F; outside</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#msb-notation"><small>- msb notation</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#let-statement"><small>- let statement</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#connect-operator"><small>- &lt;&gt; operator</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#named-block"><small>- Named block</small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/#visibility-control"><small>- Visibility control</small></a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+            <div id="features" class="heading-text">Overview</div>
+            <h1 id="concept">Concept</h1>
+<p>Veryl is a hardware description language based on SystemVerilog, providing the following advantages:</p>
+<h2 id="optimized-syntax"><strong>Optimized Syntax</strong></h2>
+<p>Veryl adopts syntax optimized for logic design while being based on a familiar basic syntax for SystemVerilog experts.
+This optimization includes guarantees for synthesizability, ensuring consistency between simulation results, and providing numerous syntax simplifications for common idioms.
+This approach enables ease of learning, improves the reliability and efficiency of the design process, and facilitates ease of code writing.</p>
+<h2 id="interoperability"><strong>Interoperability</strong></h2>
+<p>Designed with interoperability with SystemVerilog in mind, Veryl allows smooth integration and partial replacement with existing SystemVerilog components and projects.
+Furthermore, SystemVerilog source code transpiled from Veryl retains high readability, enabling seamless integration and debugging.</p>
+<h2 id="productivity"><strong>Productivity</strong></h2>
+<p>Veryl comes with a rich set of development support tools, including package managers, build tools, real-time checkers compatible with major editors such as VSCode, Vim, Emacs, automatic completion, and automatic formatting.
+These tools accelerate the development process and significantly enhance productivity.</p>
+<p>With these features, Veryl provides powerful support for designers to efficiently and productively conduct high-quality hardware design.</p>
+<h1 id="code-examples">Code Examples</h1>
+<h2 id="module-definition">Module Definition</h2>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> module definition
+</span><span style="color:#fed6af;">module </span><span>ModuleA #(
+</span><span>    </span><span style="color:#fed6af;">param </span><span>ParamA: </span><span style="color:#fffb9d;">u32</span><span> = 10,
+</span><span>    </span><span style="color:#fed6af;">const </span><span>ParamB: </span><span style="color:#fffb9d;">u32</span><span> = 10, </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> trailing comma is allowed
+</span><span>) (
+</span><span>    i_clk : </span><span style="color:#fffb9d;">input  clock</span><span>            , </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> `clock` is a special type for clock
+</span><span>    i_rst : </span><span style="color:#fffb9d;">input  reset</span><span>            , </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> `reset` is a special type for reset
+</span><span>    i_sel : </span><span style="color:#fffb9d;">input  logic</span><span>            ,
+</span><span>    i_data: </span><span style="color:#fffb9d;">input  logic</span><span>&lt;ParamA&gt; [2], </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> `[]` means unpacked array in SystemVerilog
+</span><span>    o_data: </span><span style="color:#fffb9d;">output logic</span><span>&lt;ParamA&gt;    , </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> `&lt;&gt;` means packed array in SystemVerilog
+</span><span>) {
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> const parameter declaration
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">   `param` is not allowed in module
+</span><span>    </span><span style="color:#fed6af;">const </span><span>ParamC: </span><span style="color:#fffb9d;">u32</span><span> = 10;
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> variable declaration
+</span><span>    </span><span style="color:#fed6af;">var </span><span>r_data0: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>    </span><span style="color:#fed6af;">var </span><span>r_data1: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>    </span><span style="color:#fed6af;">var </span><span>r_data2: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> value binding
+</span><span>    </span><span style="color:#fed6af;">let </span><span>_w_data2: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt; = i_data;
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> always_ff statement with reset
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">   `always_ff` can take a mandatory clock and a optional reset
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">   `if_reset` means `if (i_rst)`. This conceals reset porality
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">   `()` of `if` is not required
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">   `=` in `always_ff` is non-blocking assignment
+</span><span>    </span><span style="color:#fed6af;">always_ff</span><span> (i_clk, i_rst) {
+</span><span>        </span><span style="color:#fed6af;">if_reset</span><span> {
+</span><span>            r_data0 = 0;
+</span><span>        } </span><span style="color:#fed6af;">else if </span><span>i_sel {
+</span><span>            r_data0 = i_data[0];
+</span><span>        } </span><span style="color:#fed6af;">else</span><span> {
+</span><span>            r_data0 = i_data[1];
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> always_ff statement without reset
+</span><span>    </span><span style="color:#fed6af;">always_ff</span><span> (i_clk) {
+</span><span>        r_data1 = r_data0;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> clock and reset can be omitted
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> if there is a single clock and reset in the module
+</span><span>    </span><span style="color:#fed6af;">always_ff</span><span> {
+</span><span>        r_data2 = r_data1;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">assign </span><span>o_data = r_data1;
+</span><span>}
+</span></code></pre>
+<h2 id="interface-definition">Interface Definition</h2>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> interface definition
+</span><span style="color:#fed6af;">interface </span><span>InterfaceA #(
+</span><span>    </span><span style="color:#fed6af;">param </span><span>ParamA: </span><span style="color:#fffb9d;">u32</span><span> = 1,
+</span><span>    </span><span style="color:#fed6af;">param </span><span>ParamB: </span><span style="color:#fffb9d;">u32</span><span> = 1,
+</span><span>) {
+</span><span>    </span><span style="color:#fed6af;">const </span><span>ParamC: </span><span style="color:#fffb9d;">u32</span><span> = 1;
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>    </span><span style="color:#fed6af;">var </span><span>b: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>    </span><span style="color:#fed6af;">var </span><span>c: </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt;;
+</span><span>
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> modport definition
+</span><span>    </span><span style="color:#fed6af;">modport </span><span>master {
+</span><span>        a: </span><span style="color:#fffb9d;">input</span><span> ,
+</span><span>        b: </span><span style="color:#fffb9d;">input</span><span> ,
+</span><span>        c: </span><span style="color:#fffb9d;">output</span><span>,
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">modport </span><span>slave {
+</span><span>        a: </span><span style="color:#fffb9d;">input</span><span> ,
+</span><span>        b: </span><span style="color:#fffb9d;">input</span><span> ,
+</span><span>        c: </span><span style="color:#fffb9d;">output</span><span>,
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    i_clk: </span><span style="color:#fffb9d;">input clock</span><span>,
+</span><span>    i_rst: </span><span style="color:#fffb9d;">input reset</span><span>,
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> port declaration by modport
+</span><span>    intf_a_mst: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::master,
+</span><span>    intf_a_slv: </span><span style="color:#fed6af;">modport </span><span>InterfaceA::slave ,
+</span><span>) {
+</span><span>    </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> interface instantiation
+</span><span>    </span><span style="color:#fed6af;">inst </span><span>u_intf_a: InterfaceA [10];
+</span><span>}
+</span></code></pre>
+<h2 id="package-definition">Package Definition</h2>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> package definition
+</span><span style="color:#fed6af;">package </span><span>PackageA {
+</span><span>    </span><span style="color:#fed6af;">const </span><span>ParamA: </span><span style="color:#fffb9d;">u32</span><span> = 1;
+</span><span>    </span><span style="color:#fed6af;">const </span><span>ParamB: </span><span style="color:#fffb9d;">u32</span><span> = 1;
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">function </span><span>FuncA (
+</span><span>        a: </span><span style="color:#fffb9d;">input logic</span><span>&lt;ParamA&gt;,
+</span><span>    ) -&gt; </span><span style="color:#fffb9d;">logic</span><span>&lt;ParamA&gt; {
+</span><span>        </span><span style="color:#fed6af;">return </span><span>a + 1;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">module </span><span>ModuleA {
+</span><span>    </span><span style="color:#fed6af;">let </span><span>a : </span><span style="color:#fffb9d;">logic</span><span>&lt;10&gt; = PackageA::ParamA;
+</span><span>    </span><span style="color:#fed6af;">let </span><span>_b: </span><span style="color:#fffb9d;">logic</span><span>&lt;10&gt; = PackageA::FuncA(a);
+</span><span>}
+</span></code></pre>
+<h1 id="features">Features</h1>
+<h2 id="real-time-diagnostics">Real-time diagnostics</h2>
+<p>Issues such as undefined, unused, or unassigned variables are notified in real-time while editing in the editor.
+In the following example, adding the <code>_</code> prefix to variables flagged as unused explicitly indicates their unused status, suppressing warnings.</p>
+<div style="width:100px">
+  <video src="./img/diagnostics.mp4" autoplay loop muted>
+  </video>
+</div>
+<h2 id="auto-formatting">Auto formatting</h2>
+<p>In addition to the automatic formatting feature integrated with the editor,
+formatting through the command line and formatting checks in CI are also possible.</p>
+<div style="width:100px">
+  <video src="./img/format.mp4" autoplay loop muted>
+  </video>
+</div>
+<h2 id="integrated-test">Integrated test</h2>
+<p>Test code written by SystemVerilog or <a href="https://www.cocotb.org">cocotb</a> can be embeded in Veryl code,
+it can be executed through <code>veryl test</code> command.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span>#[test(test1)]
+</span><span style="color:#fed6af;">embed</span><span> (inline) sv{{{
+</span><span>    </span><span style="color:#fed6af;">module </span><span>test1;
+</span><span>        </span><span style="color:#fed6af;">initial </span><span>begin
+</span><span>            assert (0) </span><span style="color:#fed6af;">else</span><span> $error(</span><span style="color:#d68686;">&quot;error&quot;</span><span>);
+</span><span>        end
+</span><span>    endmodule
+</span><span>}}}
+</span></code></pre>
+<h2 id="dependency-management">Dependency management</h2>
+<p>Veryl includes a built-in dependency management feature,
+allowing for easy incorporation of libraries by simply adding the repository path and version of the library on project settings like below.</p>
+<pre data-lang="toml" style="background-color:#393939;color:#dedede;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[dependencies]
+</span><span style="color:#d6d6d680;">&quot;</span><span style="color:#d68686;">https://github.com/veryl-lang/sample</span><span style="color:#d6d6d680;">&quot; </span><span>= </span><span style="color:#d6d6d680;">&quot;</span><span style="color:#d68686;">0.1.0</span><span style="color:#d6d6d680;">&quot;
+</span></code></pre>
+<h2 id="generics">Generics</h2>
+<p>Code generation through generics achieves more reusable code than traditional parameter override.
+Parameters in function like the following example, but also module names of instantiation, type names of struct definition, and so on can be parameterized.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>function automatic logic [20-1:0] FuncA_20 (
+</span><span>    input logic [20-1:0] a
+</span><span>);
+</span><span>    return a + 1;
+</span><span>endfunction
+</span><span>
+</span><span>function automatic logic [10-1:0] FuncA_10 (
+</span><span>    input logic [10-1:0] a
+</span><span>);
+</span><span>    return a + 1;
+</span><span>endfunction
+</span><span>
+</span><span>logic [10-1:0] a;
+</span><span>logic [20-1:0] b;
+</span><span>always_comb begin
+</span><span>    a = FuncA_10(1);
+</span><span>    b = FuncA_20(1);
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">function </span><span>FuncA::&lt;T: </span><span style="color:#fed6af;">const</span><span>&gt; (
+</span><span>    a: </span><span style="color:#fffb9d;">input logic</span><span>&lt;T&gt;,
+</span><span>) -&gt; </span><span style="color:#fffb9d;">logic</span><span>&lt;T&gt; {
+</span><span>    </span><span style="color:#fed6af;">return </span><span>a + 1;
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>&lt;10&gt;;
+</span><span style="color:#fed6af;">var </span><span>b: </span><span style="color:#fffb9d;">logic</span><span>&lt;10&gt;;
+</span><span style="color:#fed6af;">always_comb</span><span> {
+</span><span>    a = FuncA::&lt;10&gt;(1);
+</span><span>    b = FuncA::&lt;20&gt;(1);
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="clock-domain-annotation">Clock Domain Annotation</h2>
+<p>If there are some clocks in a module, explicit clock domain annotation and <code>unsafe (cdc)</code> block at the clock domain boundaries are required.
+By the annotation, Veryl compiler detects unexpected clock domain crossing as error, and explicit <code>unsafe (cdc)</code> block eases to review clock domain crossing.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>module ModuleA (
+</span><span>    input  i_clk_a,
+</span><span>    input  i_dat_a,
+</span><span>    output o_dat_a,
+</span><span>    input  i_clk_b,
+</span><span>    input  i_dat_b,
+</span><span>    output o_dat_b
+</span><span>);
+</span><span>    // Carefully!!!
+</span><span>    // From i_clk_a to i_clk_b
+</span><span>    assign o_dat_b = i_dat_a;
+</span><span>endmodule
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    i_clk_a: </span><span style="color:#fffb9d;">input  </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span style="color:#fffb9d;">clock</span><span>,
+</span><span>    i_dat_a: </span><span style="color:#fffb9d;">input  </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span style="color:#fffb9d;">logic</span><span>,
+</span><span>    i_dat_a: </span><span style="color:#fffb9d;">output </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span style="color:#fffb9d;">logic</span><span>,
+</span><span>    i_clk_b: </span><span style="color:#fffb9d;">input  </span><span style="font-weight:bold;color:#d6d6ae;">`b </span><span style="color:#fffb9d;">clock</span><span>,
+</span><span>    i_dat_b: </span><span style="color:#fffb9d;">input  </span><span style="font-weight:bold;color:#d6d6ae;">`b </span><span style="color:#fffb9d;">logic</span><span>,
+</span><span>    i_dat_b: </span><span style="color:#fffb9d;">output </span><span style="font-weight:bold;color:#d6d6ae;">`b </span><span style="color:#fffb9d;">logic</span><span>,
+</span><span>) {
+</span><span>    </span><span style="color:#fed6af;">unsafe</span><span> (cdc) {
+</span><span>        </span><span style="color:#fed6af;">assign </span><span>o_dat_b = i_dat_a;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="trailing-comma">Trailing comma</h2>
+<p>Trailing comma is a syntax where a comma is placed after the last element in a list.
+It facilitates the addition and removal of elements and reduces unnecessary differences in version control systems.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>module ModuleA (
+</span><span>    input  a,
+</span><span>    input  b,
+</span><span>    output o
+</span><span>);
+</span><span>endmodule
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    a: </span><span style="color:#fffb9d;">input  logic</span><span>,
+</span><span>    b: </span><span style="color:#fffb9d;">input  logic</span><span>,
+</span><span>    o: </span><span style="color:#fffb9d;">output logic</span><span>,
+</span><span>) {
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="abstraction-of-clock-and-reset">Abstraction of clock and reset</h2>
+<p>There is no need to specify the polarity and synchronicity of the clock and reset in the syntax;
+these can be specified during build-time configuration.
+This allows generating code for both ASICs with negative asynchronous reset
+and FPGAs with positive synchronous reset from the same Veryl code.</p>
+<p>Additionally, explicit <code>clock</code> and <code>reset</code> type enables to check whether clock and reset are correctly connected to registers.
+If there is a single clock and reset in the module, the connection can be omitted.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>module ModuleA (
+</span><span>    input logic i_clk,
+</span><span>    input logic i_rst_n
+</span><span>);
+</span><span>
+</span><span>always_ff @ (posedge i_clk or negedge i_rst_n) begin
+</span><span>    if (!i_rst_n) begin
+</span><span>    end else begin
+</span><span>    end
+</span><span>end
+</span><span>
+</span><span>endmodule
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    i_clk: </span><span style="color:#fffb9d;">input clock</span><span>,
+</span><span>    i_rst: </span><span style="color:#fffb9d;">input reset</span><span>,
+</span><span>){
+</span><span>    </span><span style="color:#fed6af;">always_ff</span><span> {
+</span><span>        </span><span style="color:#fed6af;">if_reset</span><span> {
+</span><span>        } </span><span style="color:#fed6af;">else</span><span> {
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="documentation-comment">Documentation comment</h2>
+<p>Writing module descriptions as documentation comments allows for automatic documentation generation.
+You can use not only plain text but also the following formats:</p>
+<ul>
+<li><a href="https://www.markdownguide.org">Markdown</a></li>
+<li>Waveform using <a href="https://wavedrom.com">WaveDrom</a></li>
+<li>Diagram using <a href="https://mermaid.js.org">Mermaid</a></li>
+</ul>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>// Comment
+</span><span>module ModuleA;
+</span><span>endmodule
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ Documentation comment written by Markdown
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ * list
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ * list
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ 
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ ```wavedrom
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ { signal: [{ name: &quot;Alfa&quot;, wave: &quot;01.zx=ud.23.456789&quot; }] }
+</span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;">/ ```
+</span><span style="color:#fed6af;">module </span><span>ModuleA {
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="compound-assignment-operator-in-always_ff">Compound assignment operator in <code>always_ff</code></h2>
+<p>There is no dedicated non-blocking assignment operator;
+within <code>always_ff</code>, non-blocking assignments are inferred, while within <code>always_comb</code>, blocking assignments are inferred.
+Therefore, various compound assignment operators can be used within <code>always_ff</code> just like within <code>always_comb</code>.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>always_ff @ (posedge i_clk) begin
+</span><span>    if (a) begin
+</span><span>        x &lt;= x + 1;
+</span><span>    end
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">always_ff</span><span> {
+</span><span>    </span><span style="color:#fed6af;">if </span><span>a {
+</span><span>        x += 1;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="individual-namespace-of-enum-variant">Individual namespace of enum variant</h2>
+<p>Variants of an enum are defined within separate namespaces for each enum,
+thus preventing unintended name collisions.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>typedef enum logic[1:0] {
+</span><span>    MemberA,
+</span><span>    MemberB
+</span><span>} EnumA;
+</span><span>
+</span><span>EnumA a;
+</span><span>assign a = MemberA;
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">enum </span><span>EnumA: </span><span style="color:#fffb9d;">logic</span><span>&lt;2&gt; {
+</span><span>    MemberA,
+</span><span>    MemberB
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">var </span><span>a: EnumA;
+</span><span style="color:#fed6af;">assign </span><span>a = EnumA::MemberA;
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="repeat-of-concatenation"><code>repeat</code> of concatenation</h2>
+<p>By adopting the explicit <code>repeat</code> syntax as a repetition description in bit concatenation,
+readability improves over complex combinations of <code>{}</code>.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>logic [31:0] a;
+</span><span>assign a = {{2{X[9:0]}}, {12{Y}}};
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>&lt;32&gt;;
+</span><span style="color:#fed6af;">assign </span><span>a = {X[9:0] </span><span style="color:#fed6af;">repeat </span><span>2, Y </span><span style="color:#fed6af;">repeat </span><span>12};
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="if--case-expression"><code>if</code> / <code>case</code> expression</h2>
+<p>By adopting <code>if</code> and <code>case</code> expressions instead of the ternary operator,
+readability improves, especially when comparing a large number of items.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>logic a;
+</span><span>assign a = X == 0 ? Y0 :
+</span><span>           X == 1 ? Y1 :
+</span><span>           X == 2 ? Y2 : 
+</span><span>                    Y3;
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span style="color:#fed6af;">assign </span><span>a = </span><span style="color:#fed6af;">case </span><span>X {
+</span><span>    0      : Y0,
+</span><span>    1      : Y1,
+</span><span>    2      : Y2,
+</span><span>    </span><span style="color:#fed6af;">default</span><span>: Y3,
+</span><span>};
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="range-based-for--inside--outside">Range-based <code>for</code> / <code>inside</code> / <code>outside</code></h2>
+<p>With notation representing closed intervals <code>..=</code> and half-open intervals <code>..</code>,
+it is possible to uniformly describe ranges using <code>for</code>, <code>inside</code>, and <code>outside</code> (which denotes the inverse of <code>inside</code>).</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>for (int i = 0; i &lt; 10; i++) begin
+</span><span>    a[i] =   X[i] inside {[1:10]};
+</span><span>    b[i] = !(X[i] inside {[1:10]});
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">for </span><span>i: </span><span style="color:#fffb9d;">u32 </span><span style="color:#fed6af;">in </span><span>0..10 {
+</span><span>    a[i] = </span><span style="color:#fed6af;">inside  </span><span>X[i] {1..=10};
+</span><span>    b[i] = </span><span style="color:#fed6af;">outside </span><span>X[i] {1..=10};
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="msb-notation"><code>msb</code> notation</h2>
+<p>The <code>msb</code> notation, indicating the most significant bit, eliminates the need to calculate the most significant bit from parameters, making intentions clearer.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>logic a;
+</span><span>logic [WIDTH-1:0] X;
+</span><span>assign a = X[WIDTH-1];
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span style="color:#fed6af;">var </span><span>X: </span><span style="color:#fffb9d;">logic</span><span>&lt;WIDTH&gt;;
+</span><span style="color:#fed6af;">assign </span><span>a = X[</span><span style="color:#fed6af;">msb</span><span>];
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="let-statement"><code>let</code> statement</h2>
+<p>There is a dedicated <code>let</code> statement available for binding values simultaneously with variable declaration,
+which can be used in various contexts that were not supported in SystemVerilog.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>logic tmp;
+</span><span>always_ff @ (posedge i_clk) begin
+</span><span>    tmp = b + 1;
+</span><span>    x &lt;= tmp;
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">always_ff</span><span> {
+</span><span>    </span><span style="color:#fed6af;">let </span><span>tmp: </span><span style="color:#fffb9d;">logic</span><span> = b + 1;
+</span><span>    x = tmp;
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="connect-operator"><code>&lt;&gt;</code> operator</h2>
+<p><code>&lt;&gt;</code> operator can connect two interfaces. It simplifies SystemVerilog's interface connection requiring each member assignments.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>always_comb begin
+</span><span>    mst_if0.cmd   = bus_if0.cmd;
+</span><span>    bus_if0.ready = mst_if0.ready;
+</span><span>end
+</span><span>
+</span><span>always_comb begin
+</span><span>    mst_if1.cmd   = bus_if1.cmd;
+</span><span>    bus_if1.ready = mst_if1.ready;
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">connect </span><span>mst_if0 &lt;&gt; bus_if0.slave;
+</span><span>
+</span><span style="color:#fed6af;">always_comb</span><span> {
+</span><span>    mst_if1 &lt;&gt; bus_if1.slave;
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="named-block">Named block</h2>
+<p>You can define named blocks to limit the scope of variables.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>if (1) begin: BlockA
+</span><span>end
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span>:BlockA {
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+<h2 id="visibility-control">Visibility control</h2>
+<p>Modules without the <code>pub</code> keyword cannot be referenced from outside the project
+and are not included in automatic documentation generation.
+This allows distinguishing between what should be exposed externally from the project and internal implementations.</p>
+<table>
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+<pre data-lang="verilog" style="background-color:#393939;color:#dedede;" class="language-verilog "><code class="language-verilog" data-lang="verilog"><span>module ModuleA;
+</span><span>endmodule
+</span><span>
+</span><span>module ModuleB;
+</span><span>endmodule
+</span></code></pre>
+</td>
+<td>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">pub module </span><span>ModuleA {
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">module </span><span>ModuleB {
+</span><span>}
+</span></code></pre>
+</td>
+</tr>
+</table>
+
+            
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

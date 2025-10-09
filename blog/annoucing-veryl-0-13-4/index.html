@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title>Announcing Veryl 0.13.4 |  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/" />
+<meta property="og:title" content="Announcing Veryl 0.13.4" />
+<meta property="og:description" content="The Veryl team has published a new release of Veryl, 0.13.4.
+Veryl is a new hardware descr…" />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Announcing Veryl 0.13.4" />
+<meta name="twitter:description" content="The Veryl team has published a new release of Veryl, 0.13.4.
+Veryl is a new hardware descr…" />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/statistics/">Statistics</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl"><img src="https://veryl-lang.org/github-mark-white.png" alt="icon" height="20"></a>
+        
+        <a class="nav-item subtitle-text" href="https://discord.gg/MJZr9NufTT"><img src="https://veryl-lang.org/Discord-Symbol-White.png" alt="icon" height="20"></a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#new-features">New Features</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#support-port-default-value"><small>- Support port default value </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#add-mux-demux-modules-to-std-library"><small>- Add mux&#x2F;demux modules to std library </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#apply-ifdef-attributes-in-statement-block"><small>- Apply ifdef attributes in statement block </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#support-relative-path-dependency"><small>- Support relative path dependency </small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-13-4/#other-changes">Other Changes</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+<div class="heading-text">Announcing Veryl 0.13.4</div>
+<p>The Veryl team has published a new release of Veryl, 0.13.4.
+Veryl is a new hardware description language as an alternate to SystemVerilog.</p>
+<p>If you have a previous version of Veryl installed via <code>verylup</code>, you can get the latest version with:</p>
+<pre style="background-color:#393939;color:#dedede;"><code><span>$ verylup update
+</span></code></pre>
+<p>If you don't have it already, you can get <code>verylup</code> from <a href="https://github.com/veryl-lang/verylup/releases/latest">release page</a>.</p>
+<h1 id="new-features">New Features</h1>
+<h2 id="support-port-default-value">Support port default value <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1164">#1164</a>
+</h2>
+<p>Ports of module becomes to be able to have default value.
+Ports which have default value can be omitted at the instantiation, and the default values are assigned to the omitted ports.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA (
+</span><span>    a: </span><span style="color:#fffb9d;">input  logic</span><span>    ,
+</span><span>    b: </span><span style="color:#fffb9d;">input  logic</span><span> = 1, </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> default value
+</span><span>    x: </span><span style="color:#fffb9d;">output logic</span><span>    ,
+</span><span>    y: </span><span style="color:#fffb9d;">output logic</span><span> = _, </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> default value
+</span><span>) {
+</span><span>    </span><span style="color:#fed6af;">assign </span><span>x = a;
+</span><span>    </span><span style="color:#fed6af;">assign </span><span>y = b;
+</span><span>}
+</span><span>
+</span><span style="color:#fed6af;">module </span><span>ModubeB {
+</span><span>    </span><span style="color:#fed6af;">inst </span><span>instA: ModuleA (
+</span><span>        a: 1,
+</span><span>        </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> b is omitted
+</span><span>        x: _,
+</span><span>        </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> y is omitted
+</span><span>    );
+</span><span>}
+</span></code></pre>
+<h2 id="add-mux-demux-modules-to-std-library">Add mux/demux modules to std library <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1148">#1148</a>
+</h2>
+<p>Multiplexer and demultiplexer are added to the standard library.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">inst </span><span>u_mux: $std::mux (
+</span><span>    i_select: _,
+</span><span>    i_data  : _,
+</span><span>    o_data  : _,
+</span><span>);
+</span><span>
+</span><span style="color:#fed6af;">inst </span><span>u_demux: $std::demux (
+</span><span>    i_select: _,
+</span><span>    i_data  : _,
+</span><span>    o_data  : _,
+</span><span>);
+</span></code></pre>
+<h2 id="apply-ifdef-attributes-in-statement-block">Apply ifdef attributes in statement block <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1136">#1136</a>
+</h2>
+<p><code>ifdef</code> attribute can be used in statement block.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">always_comb</span><span> {
+</span><span>    #[ifdef(DEFINE_A)]
+</span><span>    {
+</span><span>        a = 1;
+</span><span>        b = 1;
+</span><span>    }
+</span><span>    #[ifdef(DEFINE_B)]
+</span><span>    c = 1;
+</span><span>}
+</span></code></pre>
+<h2 id="support-relative-path-dependency">Support relative path dependency <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1099">#1099</a>
+</h2>
+<p>Dependencies to the project through local relative paths can be specified.</p>
+<pre data-lang="toml" style="background-color:#393939;color:#dedede;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[dependencies]
+</span><span style="color:#d6d6d680;">&quot;</span><span style="color:#d68686;">../../library/path</span><span style="color:#d6d6d680;">&quot; </span><span>= </span><span style="color:#d6d6d680;">&quot;</span><span style="color:#d68686;">0.1.0</span><span style="color:#d6d6d680;">&quot;
+</span></code></pre>
+<h1 id="other-changes">Other Changes</h1>
+<p>Check out everything that changed in <a href="https://github.com/veryl-lang/veryl/releases/tag/v0.13.4">Release v0.13.4</a>.</p>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

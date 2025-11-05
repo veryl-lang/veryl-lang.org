@@ -259,10 +259,14 @@ weight = 4
           labels.push('x86_64-linux');
         } else if (platform == 'X86_64Mac') {
           labels.push('x86_64-mac');
-        } else if (platform == 'Aarch64Mac') {
-          labels.push('aarch64-mac');
         } else if (platform == 'X86_64Windows') {
           labels.push('x86_64-windows');
+        } else if (platform == 'Aarch64Linux') {
+          labels.push('aarch64-linux');
+        } else if (platform == 'Aarch64Mac') {
+          labels.push('aarch64-mac');
+        } else if (platform == 'Aarch64Windows') {
+          labels.push('aarch64-windows');
         }
         data.push(platform_downloads[platform]);
       }

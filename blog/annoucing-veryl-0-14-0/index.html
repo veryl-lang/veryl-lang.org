@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title>Announcing Veryl 0.14.0 |  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/" />
+<meta property="og:title" content="Announcing Veryl 0.14.0" />
+<meta property="og:description" content="The Veryl team has published a new release of Veryl, 0.14.0.
+Veryl is a new hardware descr…" />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Announcing Veryl 0.14.0" />
+<meta name="twitter:description" content="The Veryl team has published a new release of Veryl, 0.14.0.
+Veryl is a new hardware descr…" />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/statistics/">Statistics</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl"><img src="https://veryl-lang.org/github-mark-white.png" alt="icon" height="20"></a>
+        
+        <a class="nav-item subtitle-text" href="https://discord.gg/MJZr9NufTT"><img src="https://veryl-lang.org/Discord-Symbol-White.png" alt="icon" height="20"></a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#breaking-changes">Breaking Changes</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#new-type-checker"><small>- New type checker    </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#remove-variable-declaration-from-package"><small>- Remove variable declaration from package </small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#new-features">New Features</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#lsp-support-for-file-renaming-and-deleting"><small>- LSP support for file renaming and deleting </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#support-clock-domain-annotation-for-interface-instance"><small>- Support clock domain annotation for interface instance </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#add-align-attribute"><small>- Add align attribute </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#support-default-member-of-modport"><small>- Support default member of modport </small></a>
+        </div>
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#enable-assign-to-concatenation"><small>- Enable assign to concatenation </small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-veryl-0-14-0/#other-changes">Other Changes</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+<div class="heading-text">Announcing Veryl 0.14.0</div>
+<p>The Veryl team has published a new release of Veryl, 0.14.0.
+Veryl is a new hardware description language as an alternate to SystemVerilog.</p>
+<p>If you have a previous version of Veryl installed via <code>verylup</code>, you can get the latest version with:</p>
+<pre style="background-color:#393939;color:#dedede;"><code><span>$ verylup update
+</span></code></pre>
+<p>If you don't have it already, you can get <code>verylup</code> from <a href="https://github.com/veryl-lang/verylup/releases/latest">release page</a>.</p>
+<h1 id="breaking-changes">Breaking Changes</h1>
+<h2 id="new-type-checker">New type checker <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1216">#1216</a>
+ <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1239">#1239</a>
+ <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1240">#1240</a>
+ <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1264">#1264</a>
+</h2>
+<p>New type checker is introduced to enable the following checks.</p>
+<ul>
+<li>Mismatch in array dimensions during assignment</li>
+<li>Assigning a 4-state value to a 2-state type</li>
+<li>Out-of-range selection for arrays or bits</li>
+<li>Interface mismatch during port connection</li>
+</ul>
+<p>Please see the following blog for the detailed information.</p>
+<p><a href="https://veryl-lang.org/blog/new-type-checker/">https://veryl-lang.org/blog/new-type-checker/</a></p>
+<p>This is not a breaking chage ideally, but the existing code may be broken by mistakes of new checker.
+If there is any mistake, please open an <a href="https://github.com/veryl-lang/veryl/issues">issue</a>.</p>
+<h2 id="remove-variable-declaration-from-package">Remove variable declaration from package <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1305">#1305</a>
+</h2>
+<p>Variable declaration in package is removed because it is not synthesizable.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">package </span><span>PackageA {
+</span><span>    </span><span style="color:#fed6af;">var </span><span>X: </span><span style="color:#fffb9d;">logic</span><span>; </span><span style="color:#a0cfa1;">//</span><span style="color:#87ae86;"> Error
+</span><span>}
+</span></code></pre>
+<h1 id="new-features">New Features</h1>
+<h2 id="lsp-support-for-file-renaming-and-deleting">LSP support for file renaming and deleting <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1226">#1226</a>
+</h2>
+<p>veryl-ls becomes to support file renaming and deleting to avoid unexpected errors caused by these file operation.</p>
+<h2 id="support-clock-domain-annotation-for-interface-instance">Support clock domain annotation for interface instance <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1279">#1279</a>
+</h2>
+<p>Interface instances can have clock domain annotation as the same as normal variables.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">var </span><span>x: </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span>
+</span><span style="color:#fed6af;">inst </span><span>intf: </span><span style="font-weight:bold;color:#d6d6ae;">`a </span><span>InterfaceA;
+</span></code></pre>
+<h2 id="add-align-attribute">Add <code>align</code> attribute <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1283">#1283</a>
+</h2>
+<p>To improve readability of complex expression, <code>align</code> attribute was added.
+For example, by adding <code>#[align(number)]</code>, all numbers in expression is aligned.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">module </span><span>ModuleA {
+</span><span>    #[align(number, identifier)]
+</span><span>    </span><span style="color:#fed6af;">let </span><span>_c : </span><span style="color:#fffb9d;">logic</span><span> = {
+</span><span>        a  [0 ] </span><span style="color:#fed6af;">repeat </span><span>1 , a  [0 ] </span><span style="color:#fed6af;">repeat </span><span>1 ,
+</span><span>        aa [1 ] </span><span style="color:#fed6af;">repeat </span><span>8 , aa [1 ] </span><span style="color:#fed6af;">repeat </span><span>8 ,
+</span><span>        aaa[2 ] </span><span style="color:#fed6af;">repeat </span><span>16, aaa[2 ] </span><span style="color:#fed6af;">repeat </span><span>16,
+</span><span>    };
+</span><span>}
+</span></code></pre>
+<h2 id="support-default-member-of-modport">Support default member of modport <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1288">#1288</a>
+</h2>
+<p>Default member syntax <code>..[direction]</code> is introduced to make modport definition concise.
+In most cases, the direction of slave-like modport is converse of master-like modport.
+So the special direction <code>converse([modport_name])</code> is useful to make clear the definition of master/slave pair.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">interface </span><span>InterfaceA {
+</span><span>    </span><span style="color:#fed6af;">var </span><span>a: </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span>    </span><span style="color:#fed6af;">var </span><span>b: </span><span style="color:#fffb9d;">logic</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">modport </span><span>master {
+</span><span>        a: </span><span style="color:#fffb9d;">output</span><span>,
+</span><span>        b: </span><span style="color:#fffb9d;">input</span><span> ,
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">modport </span><span>slave {
+</span><span>        ..</span><span style="color:#fffb9d;">converse</span><span>(master)
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#fed6af;">modport </span><span>monitor {
+</span><span>        ..</span><span style="color:#fffb9d;">input
+</span><span>    }
+</span></code></pre>
+<h2 id="enable-assign-to-concatenation">Enable <code>assign</code> to concatenation <a style="font-size: 0.8em" href="https:&#x2F;&#x2F;github.com&#x2F;veryl-lang&#x2F;veryl/pull/1298">#1298</a>
+</h2>
+<p>Concatenation can be used as the left hand side of <code>assign</code> declaration.</p>
+<pre data-lang="veryl" style="background-color:#393939;color:#dedede;" class="language-veryl "><code class="language-veryl" data-lang="veryl"><span style="color:#fed6af;">assign</span><span> {a, b} = 1;
+</span></code></pre>
+<h1 id="other-changes">Other Changes</h1>
+<p>Check out everything that changed in <a href="https://github.com/veryl-lang/veryl/releases/tag/v0.14.0">Release v0.14.0</a>.</p>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

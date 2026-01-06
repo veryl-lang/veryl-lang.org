@@ -19,7 +19,9 @@ If you don't have it already, you can get `verylup` from [release page](https://
 
 Veryl extension for [Zed](https://zed.dev) is added.
 It supports syntax highlighting and language server.
-Now the extension is waiting the approvement of the official extension registry.
+The extension can be installed through the following URL.
+
+[https://zed.dev/extensions/veryl](https://zed.dev/extensions/veryl)
 
 # Other Changes
 

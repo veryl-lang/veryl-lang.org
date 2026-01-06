@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <title>Announcing Verylup 0.1.11 |  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #2baa59;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #293831;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+
+            --text-font-family: "Fira Sans", sans-serif;
+
+        }
+    }
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://veryl-lang.org/juice.css">
+    <!-- Juice references /normalize.css, which doesn't work, so we reference ./normalics.css here -->
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXW2P6CCF3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NXW2P6CCF3');
+    </script>
+    
+<meta property="og:url" content="https://veryl-lang.org/blog/annoucing-verylup-0-1-11/" />
+<meta property="og:title" content="Announcing Verylup 0.1.11" />
+<meta property="og:description" content="The Veryl team has published a new release of Verylup, 0.1.11.
+Verylup is the official too…" />
+<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content="veryl-lang.org" />
+<meta name="twitter:title" content="Announcing Verylup 0.1.11" />
+<meta name="twitter:description" content="The Veryl team has published a new release of Verylup, 0.1.11.
+Verylup is the official too…" />
+<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://veryl-lang.org/">
+    <div class="logo">
+        <img src="https://veryl-lang.org/logo.png" alt="logo">
+        
+    </div>
+</a>
+
+<nav>
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/install/">Install</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/docs/">Docs</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/statistics/">Statistics</a>
+    
+    
+    
+    
+    <a class="nav-item subtitle-text" href="https://veryl-lang.org/blog/">Blog</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://doc.veryl-lang.org/playground">Playground</a>
+        
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://github.com/veryl-lang/veryl"><img src="https://veryl-lang.org/github-mark-white.png" alt="icon" height="20"></a>
+        
+        <a class="nav-item subtitle-text" href="https://discord.gg/MJZr9NufTT"><img src="https://veryl-lang.org/Discord-Symbol-White.png" alt="icon" height="20"></a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+
+
+
+
+<div class="toc">
+    <div class="toc-sticky">
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-verylup-0-1-11/#new-features">New Features</a>
+        </div>
+        
+        
+        <div class="toc-item-child">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-verylup-0-1-11/#custom-ca-bundle-support-for-downloads"><small>- Custom CA bundle support for downloads</small></a>
+        </div>
+        
+        
+        
+        <div class="toc-item">
+            <a class="subtext" href="https://veryl-lang.org/blog/annoucing-verylup-0-1-11/#other-changes">Other Changes</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+        <div class="content text">
+            
+<div class="heading-text">Announcing Verylup 0.1.11</div>
+<p>The Veryl team has published a new release of Verylup, 0.1.11.
+Verylup is the official toolchain installer of Veryl.
+It installs the latest Veryl toolchain and eases to update and switch the toolchains.</p>
+<p>If you have a previous version of Verylup installed, getting Verylup 0.1.11 is as easy as stopping any programs which may be using Verylup (e.g. closing your IDE) and running:</p>
+<pre style="background-color:#393939;color:#dedede;"><code><span>verylup update
+</span></code></pre>
+<p>If you don't have it already, please refer <a href="https://doc.veryl-lang.org/book/03_getting_started/01_installation.html">Getting Started</a>.</p>
+<h1 id="new-features">New Features</h1>
+<h2 id="custom-ca-bundle-support-for-downloads">Custom CA bundle support for downloads</h2>
+<p>In environments behind a proxy that re-signs HTTPS traffic with an enterprise root CA, custom CA bundle support is necessary.
+verylup becomes to load a custom CA bundle through <code>SSL_CERT_FILE</code> environment variable or OS-dependent CA stores.</p>
+<h1 id="other-changes">Other Changes</h1>
+<p>Check out everything that changed in <a href="https://github.com/veryl-lang/verylup/releases/tag/v0.1.11">Release v0.1.11</a>.</p>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+    </footer>
+    
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>

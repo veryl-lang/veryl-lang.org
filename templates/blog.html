@@ -10,6 +10,39 @@
 
 {% block content %}
 {% for page in section.pages %}
-<h1>{{ page.date }} <a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+<article class="blog-entry">
+    <h1 class="blog-entry-title">
+        <span class="blog-entry-date">{{ page.date }}</span>
+        <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    </h1>
+    {% if page.description %}
+    <p class="blog-entry-desc subtext">{{ page.description }}</p>
+    {% endif %}
+</article>
 {% endfor %}
+<style>
+    .blog-entry {
+        padding: 0.6rem 0 1.1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .blog-entry:last-child {
+        border-bottom: none;
+    }
+    .blog-entry-title {
+        font-size: 1.4rem;
+        margin: 0 0 0.3rem;
+        line-height: 1.35;
+    }
+    .blog-entry-date {
+        color: var(--muted-text-color);
+        font-weight: 500;
+        font-size: 1rem;
+        margin-right: 0.6rem;
+    }
+    .blog-entry-desc {
+        margin: 0;
+        color: var(--muted-text-color);
+        line-height: 1.55;
+    }
+</style>
 {% endblock content %}

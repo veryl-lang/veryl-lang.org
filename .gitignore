@@ -1,0 +1,7 @@
+# Zola build output. The deployed site lives on the gh-pages branch (pushed by
+# shalzz/zola-deploy-action), so the local public/ directory is not needed.
+public/
+
+# OGP images are generated in CI from scripts/ogp/generate.py.
+# Run `python3 scripts/ogp/generate.py` locally if you want to preview them.
+static/ogp/

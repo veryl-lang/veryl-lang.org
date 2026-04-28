@@ -1,0 +1,17 @@
+pub module Counter (
+    clk: input  clock,
+    rst: input  reset,
+    cnt: output logic<32>,
+) {
+    var r_cnt: logic<32>;
+
+    always_ff {
+        if_reset {
+            r_cnt = 0;
+        } else {
+            r_cnt += 1;
+        }
+    }
+
+    assign cnt = r_cnt;
+}

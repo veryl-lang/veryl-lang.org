@@ -148,25 +148,57 @@ module ModuleA {
 Issues such as undefined, unused, or unassigned variables are notified in real-time while editing in the editor.
 In the following example, adding the `_` prefix to variables flagged as unused explicitly indicates their unused status, suppressing warnings.
 
-<div style="width:100px">
-  <video src="./img/diagnostics.mp4" autoplay loop muted>
-  </video>
-</div>
+![Real-time diagnostics demo](./img/diagnostics.gif)
 
 ## Auto formatting {#auto-formatting}
 
 In addition to the automatic formatting feature integrated with the editor,
 formatting through the command line and formatting checks in CI are also possible.
 
-<div style="width:100px">
-  <video src="./img/format.mp4" autoplay loop muted>
-  </video>
-</div>
+![Auto formatting demo](./img/format.gif)
 
 ## Integrated test {#integrated-test}
 
-Test code written by SystemVerilog or [cocotb](https://www.cocotb.org) can be embeded in Veryl code,
-it can be executed through `veryl test` command.
+Testbenches can be written directly in Veryl using its native testbench syntax,
+and executed through the `veryl test` command.
+`$tb::clock_gen` and `$tb::reset_gen` provide clock and reset generation,
+and `initial` blocks describe test scenarios.
+Individual tests can be skipped with the `#[ignore]` attribute.
+
+```veryl
+#[test(test_counter)]
+module test_counter {
+    inst clk: $tb::clock_gen;
+    inst rst: $tb::reset_gen (
+        clk: clk,
+    );
+
+    var cnt: logic<32>;
+
+    inst dut: Counter (
+        clk: clk,
+        rst: rst,
+        cnt: cnt,
+    );
+
+    initial {
+        rst.assert(clk);
+        clk.next  (10);
+        $assert   (cnt == 32'd10);
+        $finish   ();
+    }
+}
+```
+
+```console
+$ veryl test
+[INFO ]    Executing test (test_counter)
+[INFO ]    Succeeded test (test_counter)
+[INFO ]    Completed tests : 1 passed, 0 failed
+```
+
+Existing test code written in SystemVerilog or [cocotb](https://www.cocotb.org)
+can also be embedded in Veryl code as a fallback.
 
 ```veryl
 #[test(test1)]
@@ -189,12 +221,28 @@ allowing for easy incorporation of libraries by simply adding the repository pat
 "https://github.com/veryl-lang/sample" = "0.1.0"
 ```
 
+## Standard library {#standard-library}
+
+Veryl ships a standard library providing generic interface and package definitions for common bus protocols.
+Parameterize the package once, then reuse the interface across modules.
+
+```veryl
+alias package axi3_pkg = $std::axi3_pkg::<32, 4, 8>;
+
+module ModuleA (
+    slv_if: modport $std::axi3_if::<axi3_pkg>::slave,
+) {}
+```
+
+The standard library currently includes AXI3, AXI4, AXI4-Lite, and AXI-Stream interfaces.
+See the [standard library reference](https://std.veryl-lang.org) for the full list.
+
 ## Generics {#generics}
 
 Code generation through generics achieves more reusable code than traditional parameter override.
 Parameters in function like the following example, but also module names of instantiation, type names of struct definition, and so on can be parameterized.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -245,12 +293,70 @@ always_comb {
 </tr>
 </table>
 
+## Integer types {#integer-types}
+
+In addition to `u32` / `i32` / `u64` / `i64`, Veryl provides fixed-width primitive types
+`u8`, `u16`, `i8`, `i16` for smaller bit widths, and `p8`, `p16`, `p32`, `p64` for
+positive-only integers (restricted to non-negative values).
+
+```veryl
+let a: u8  = 0;
+let b: u16 = 0;
+let c: i8  = 0;
+let d: i16 = 0;
+
+module ModuleA {
+    const X: p32 = 10;
+}
+```
+
+## Inferable enum width {#inferable-enum-width}
+
+When the base type of an `enum` is omitted, it previously defaulted to `logic`.
+A new syntax lets you specify the base type while still inferring its width from the variants.
+
+```veryl
+enum A: bit<_> {
+   X,
+   Y,
+}
+
+enum B: logic<_> {
+   X,
+   Y,
+}
+```
+
+## Global function {#global-function}
+
+Functions can be defined at the project root, outside of `module`, `interface`, and `package`.
+Global functions support generic type parameters and can be exposed with `pub`.
+
+```veryl
+pub function add::<W: u32> (
+    a: input logic<W>,
+    b: input logic<W>,
+) -> logic<W> {
+    return a + b;
+}
+
+module ModuleA #(
+    param WIDTH: u32 = 8,
+) (
+    i_a: input  logic<WIDTH>,
+    i_b: input  logic<WIDTH>,
+    o_c: output logic<WIDTH>,
+) {
+    assign o_c = add::<WIDTH>(i_a, i_b);
+}
+```
+
 ## Clock Domain Annotation {#clock-domain-annotation}
 
 If there are some clocks in a module, explicit clock domain annotation and `unsafe (cdc)` block at the clock domain boundaries are required.
 By the annotation, Veryl compiler detects unexpected clock domain crossing as error, and explicit `unsafe (cdc)` block eases to review clock domain crossing.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -295,43 +401,21 @@ module ModuleA (
 </tr>
 </table>
 
-## Trailing comma {#trailing-comma}
-
-Trailing comma is a syntax where a comma is placed after the last element in a list.
-It facilitates the addition and removal of elements and reduces unnecessary differences in version control systems.
-
-<table>
-<tr>
-<th>SystemVerilog</th>
-<th>Veryl</th>
-</tr>
-<tr>
-<td>
-
-```verilog
-module ModuleA (
-    input  a,
-    input  b,
-    output o
-);
-endmodule
-```
-
-</td>
-<td>
+Variables without explicit clock domain annotation can be inferred from their context.
+For example, when a variable is assigned from a signal with a known clock domain, the variable's domain is automatically inferred.
 
 ```veryl
 module ModuleA (
-    a: input  logic,
-    b: input  logic,
-    o: output logic,
+    i_clk_a: input  'a clock,
+    i_rst_a: input  'a reset,
+    i_dat_a: input  'a logic,
+    o_dat_a: output 'a logic,
 ) {
+    var x: logic;
+    assign x = i_dat_a;   // x is inferred as 'a domain
+    assign o_dat_a = x;
 }
 ```
- 
-</td>
-</tr>
-</table>
 
 ## Abstraction of clock and reset {#abstraction-of-clock-and-reset}
 
@@ -343,7 +427,7 @@ and FPGAs with positive synchronous reset from the same Veryl code.
 Additionally, explicit `clock` and `reset` type enables to check whether clock and reset are correctly connected to registers.
 If there is a single clock and reset in the module, the connection can be omitted.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -386,6 +470,43 @@ module ModuleA (
 </tr>
 </table>
 
+## Visibility control {#visibility-control}
+
+Modules without the `pub` keyword cannot be referenced from outside the project
+and are not included in automatic documentation generation.
+This allows distinguishing between what should be exposed externally from the project and internal implementations.
+
+<table class="sv-compare">
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+module ModuleA;
+endmodule
+
+module ModuleB;
+endmodule
+```
+
+</td>
+<td>
+
+```veryl
+pub module ModuleA {
+}
+
+module ModuleB {
+}
+```
+ 
+</td>
+</tr>
+</table>
+
 ## Documentation comment {#documentation-comment}
 
 Writing module descriptions as documentation comments allows for automatic documentation generation.
@@ -395,7 +516,7 @@ You can use not only plain text but also the following formats:
 * Waveform using [WaveDrom](https://wavedrom.com)
 * Diagram using [Mermaid](https://mermaid.js.org)
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -429,13 +550,12 @@ module ModuleA {
 </tr>
 </table>
 
-## Compound assignment operator in `always_ff` {#compound-assignment-operator-in-always_ff}
+## `let` statement {#let-statement}
 
-There is no dedicated non-blocking assignment operator;
-within `always_ff`, non-blocking assignments are inferred, while within `always_comb`, blocking assignments are inferred.
-Therefore, various compound assignment operators can be used within `always_ff` just like within `always_comb`.
+There is a dedicated `let` statement available for binding values simultaneously with variable declaration,
+which can be used in various contexts that were not supported in SystemVerilog.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -444,10 +564,10 @@ Therefore, various compound assignment operators can be used within `always_ff` 
 <td>
 
 ```verilog
+logic tmp;
 always_ff @ (posedge i_clk) begin
-    if (a) begin
-        x <= x + 1;
-    end
+    tmp = b + 1;
+    x <= tmp;
 end
 ```
 
@@ -456,80 +576,9 @@ end
 
 ```veryl
 always_ff {
-    if a {
-        x += 1;
-    }
+    let tmp: logic = b + 1;
+    x = tmp;
 }
-```
- 
-</td>
-</tr>
-</table>
-
-## Individual namespace of enum variant {#individual-namespace-of-enum-variant}
-
-Variants of an enum are defined within separate namespaces for each enum,
-thus preventing unintended name collisions.
-
-<table>
-<tr>
-<th>SystemVerilog</th>
-<th>Veryl</th>
-</tr>
-<tr>
-<td>
-
-```verilog
-typedef enum logic[1:0] {
-    MemberA,
-    MemberB
-} EnumA;
-
-EnumA a;
-assign a = MemberA;
-```
-
-</td>
-<td>
-
-```veryl
-enum EnumA: logic<2> {
-    MemberA,
-    MemberB
-}
-
-var a: EnumA;
-assign a = EnumA::MemberA;
-```
- 
-</td>
-</tr>
-</table>
-
-## `repeat` of concatenation {#repeat-of-concatenation}
-
-By adopting the explicit `repeat` syntax as a repetition description in bit concatenation,
-readability improves over complex combinations of `{}`.
-
-<table>
-<tr>
-<th>SystemVerilog</th>
-<th>Veryl</th>
-</tr>
-<tr>
-<td>
-
-```verilog
-logic [31:0] a;
-assign a = {{2{X[9:0]}}, {12{Y}}};
-```
-
-</td>
-<td>
-
-```veryl
-var a: logic<32>;
-assign a = {X[9:0] repeat 2, Y repeat 12};
 ```
  
 </td>
@@ -541,7 +590,7 @@ assign a = {X[9:0] repeat 2, Y repeat 12};
 By adopting `if` and `case` expressions instead of the ternary operator,
 readability improves, especially when comparing a large number of items.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -579,7 +628,7 @@ assign a = case X {
 With notation representing closed intervals `..=` and half-open intervals `..`,
 it is possible to uniformly describe ranges using `for`, `inside`, and `outside` (which denotes the inverse of `inside`).
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -608,77 +657,11 @@ for i: u32 in 0..10 {
 </tr>
 </table>
 
-## `msb` notation {#msb-notation}
-
-The `msb` notation, indicating the most significant bit, eliminates the need to calculate the most significant bit from parameters, making intentions clearer.
-
-<table>
-<tr>
-<th>SystemVerilog</th>
-<th>Veryl</th>
-</tr>
-<tr>
-<td>
-
-```verilog
-logic a;
-logic [WIDTH-1:0] X;
-assign a = X[WIDTH-1];
-```
-
-</td>
-<td>
-
-```veryl
-var a: logic;
-var X: logic<WIDTH>;
-assign a = X[msb];
-```
- 
-</td>
-</tr>
-</table>
-
-## `let` statement {#let-statement}
-
-There is a dedicated `let` statement available for binding values simultaneously with variable declaration,
-which can be used in various contexts that were not supported in SystemVerilog.
-
-<table>
-<tr>
-<th>SystemVerilog</th>
-<th>Veryl</th>
-</tr>
-<tr>
-<td>
-
-```verilog
-logic tmp;
-always_ff @ (posedge i_clk) begin
-    tmp = b + 1;
-    x <= tmp;
-end
-```
-
-</td>
-<td>
-
-```veryl
-always_ff {
-    let tmp: logic = b + 1;
-    x = tmp;
-}
-```
- 
-</td>
-</tr>
-</table>
-
 ## `<>` operator {#connect-operator}
 
 `<>` operator can connect two interfaces. It simplifies SystemVerilog's interface connection requiring each member assignments.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -713,11 +696,49 @@ always_comb {
 </tr>
 </table>
 
+## Trailing comma {#trailing-comma}
+
+Trailing comma is a syntax where a comma is placed after the last element in a list.
+It facilitates the addition and removal of elements and reduces unnecessary differences in version control systems.
+
+<table class="sv-compare">
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+module ModuleA (
+    input  a,
+    input  b,
+    output o
+);
+endmodule
+```
+
+</td>
+<td>
+
+```veryl
+module ModuleA (
+    a: input  logic,
+    b: input  logic,
+    o: output logic,
+) {
+}
+```
+ 
+</td>
+</tr>
+</table>
+
 ## Named block {#named-block}
 
 You can define named blocks to limit the scope of variables.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -742,13 +763,11 @@ end
 </tr>
 </table>
 
-## Visibility control {#visibility-control}
+## `msb` notation {#msb-notation}
 
-Modules without the `pub` keyword cannot be referenced from outside the project
-and are not included in automatic documentation generation.
-This allows distinguishing between what should be exposed externally from the project and internal implementations.
+The `msb` notation, indicating the most significant bit, eliminates the need to calculate the most significant bit from parameters, making intentions clearer.
 
-<table>
+<table class="sv-compare">
 <tr>
 <th>SystemVerilog</th>
 <th>Veryl</th>
@@ -757,22 +776,125 @@ This allows distinguishing between what should be exposed externally from the pr
 <td>
 
 ```verilog
-module ModuleA;
-endmodule
-
-module ModuleB;
-endmodule
+logic a;
+logic [WIDTH-1:0] X;
+assign a = X[WIDTH-1];
 ```
 
 </td>
 <td>
 
 ```veryl
-pub module ModuleA {
+var a: logic;
+var X: logic<WIDTH>;
+assign a = X[msb];
+```
+ 
+</td>
+</tr>
+</table>
+
+## `repeat` of concatenation {#repeat-of-concatenation}
+
+By adopting the explicit `repeat` syntax as a repetition description in bit concatenation,
+readability improves over complex combinations of `{}`.
+
+<table class="sv-compare">
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+logic [31:0] a;
+assign a = {{2{X[9:0]}}, {12{Y}}};
+```
+
+</td>
+<td>
+
+```veryl
+var a: logic<32>;
+assign a = {X[9:0] repeat 2, Y repeat 12};
+```
+ 
+</td>
+</tr>
+</table>
+
+## Compound assignment operator in `always_ff` {#compound-assignment-operator-in-always_ff}
+
+There is no dedicated non-blocking assignment operator;
+within `always_ff`, non-blocking assignments are inferred, while within `always_comb`, blocking assignments are inferred.
+Therefore, various compound assignment operators can be used within `always_ff` just like within `always_comb`.
+
+<table class="sv-compare">
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+always_ff @ (posedge i_clk) begin
+    if (a) begin
+        x <= x + 1;
+    end
+end
+```
+
+</td>
+<td>
+
+```veryl
+always_ff {
+    if a {
+        x += 1;
+    }
+}
+```
+ 
+</td>
+</tr>
+</table>
+
+## Individual namespace of enum variant {#individual-namespace-of-enum-variant}
+
+Variants of an enum are defined within separate namespaces for each enum,
+thus preventing unintended name collisions.
+
+<table class="sv-compare">
+<tr>
+<th>SystemVerilog</th>
+<th>Veryl</th>
+</tr>
+<tr>
+<td>
+
+```verilog
+typedef enum logic[1:0] {
+    MemberA,
+    MemberB
+} EnumA;
+
+EnumA a;
+assign a = MemberA;
+```
+
+</td>
+<td>
+
+```veryl
+enum EnumA: logic<2> {
+    MemberA,
+    MemberB
 }
 
-module ModuleB {
-}
+var a: EnumA;
+assign a = EnumA::MemberA;
 ```
  
 </td>

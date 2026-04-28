@@ -12,6 +12,13 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Generate OGP images
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          python3 scripts/ogp/generate.py
+
       - uses: shalzz/zola-deploy-action@v0.20.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

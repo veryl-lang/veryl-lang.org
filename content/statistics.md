@@ -181,24 +181,36 @@ weight = 4
       total_downloads.push(sum);
     }
 
-    var datasets = [];
     latest_versions = versions.slice(-5);
 
-    for (const version in downloads) {
-      if (latest_versions.includes(version)) {
-        datasets.push({
-          label: version,
-          data: downloads[version],
-          borderWidth: 1
-        });
+    // Trim the leading date range where none of the latest versions had any
+    // downloads yet, so the chart starts at the first meaningful data point.
+    var version_start = labels.length;
+    for (const version of latest_versions) {
+      for (let i = 0; i < downloads[version].length; i++) {
+        const v = downloads[version][i];
+        if (v !== undefined && v > 0) {
+          if (i < version_start) version_start = i;
+          break;
+        }
       }
+    }
+
+    var version_labels = labels.slice(version_start);
+    var datasets = [];
+    for (const version of latest_versions) {
+      datasets.push({
+        label: version,
+        data: downloads[version].slice(version_start),
+        borderWidth: 1
+      });
     }
 
     {
       const cfg = {
         type: 'line',
         data: {
-          labels: labels,
+          labels: version_labels,
           datasets: datasets
         },
         options: {

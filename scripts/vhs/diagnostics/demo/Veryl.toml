@@ -1,0 +1,6 @@
+[project]
+name = "diag_demo"
+version = "0.1.0"
+[build]
+sources = ["src"]
+target = {type = "directory", path = "target"}

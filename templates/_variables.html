@@ -1,12 +1,12 @@
 <style>
     :root {
-        /* Primary theme color */
+        /* Primary theme color (Veryl brand green, kept) */
         --primary-color: #2baa59;
         /* Primary theme text color */
-        --primary-text-color: #543631;
+        --primary-text-color: #24262a;
         --primary-text-color-over: #000;
         /* Primary theme link color */
-        --primary-link-color: #F9BB2D;
+        --primary-link-color: #d46e13;
         /* Secondary color: the background body color */
         --secondary-color: #fcfaf6;
         --secondary-text-color: #303030;
@@ -14,7 +14,13 @@
         --toc-highlight-text-color: #d46e13;
         --toc-background-color: white;
 
-        --shadow-color: #ddd;
+        --shadow-color: #e4e7ec;
+        --border-color: #e4e7ec;
+        --muted-text-color: #5f6b7a;
+        --accent-color: #0ea5a5;
+
+        /* On-primary text color for buttons/nav sitting on --primary-color */
+        --on-primary-color: #ffffff;
 
         /* Font used for headers (h1 & h2) */
         --header-font-family: "Fira Sans", sans-serif;
@@ -24,20 +30,210 @@
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --primary-color: #293831;
-            --primary-text-color: #d7d7d7;
+            --primary-color: #1e2621;
+            --primary-text-color: #e6e8eb;
             --primary-text-color-over: #FFF;
-            --primary-link-color: #9b9b9b;
-            --secondary-color: #282828;
+            --primary-link-color: #5fd28a;
+            --secondary-color: #161a17;
             --secondary-text-color: #f2f2f2;
-            --toc-highlight-text-color: #f2f2f2;
-            --toc-background-color: #3a3a3a;
+            --toc-highlight-text-color: #5fd28a;
+            --toc-background-color: #232824;
 
-            --shadow-color: #202020;
+            --shadow-color: #0d0f0e;
+            --border-color: #2a2f34;
+            --muted-text-color: #9aa3ad;
+            --accent-color: #22d3ce;
+
+            --on-primary-color: #f2f2f2;
+
             --header-font-family: "Fira Sans", sans-serif;
-
             --text-font-family: "Fira Sans", sans-serif;
-
         }
+    }
+
+    /* ---- Typography ---- */
+    main .content h1,
+    main .content h2,
+    main .content h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.25;
+        color: var(--primary-text-color);
+    }
+
+    main .content h2 {
+        font-weight: 700;
+        margin-top: 2.8rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    main .content h3 {
+        font-weight: 600;
+        margin-top: 2rem;
+    }
+
+    main .content p,
+    main .content li {
+        line-height: 1.7;
+    }
+
+    /* ---- Code blocks ---- */
+    main .content pre {
+        border-radius: 6px;
+        border-left: 3px solid var(--primary-color);
+        box-shadow: 0 1px 2px var(--shadow-color);
+        padding: 1rem 1.2rem;
+        overflow-x: auto;
+    }
+
+    main .content pre code,
+    main .content code {
+        font-family: "JetBrains Mono", "Fira Code", "Fira Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.92em;
+    }
+
+    main .content :not(pre) > code {
+        background: var(--toc-background-color);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 0.1em 0.35em;
+    }
+
+    /* ---- Header shadow ---- */
+    header {
+        box-shadow: 0 1px 3px var(--shadow-color);
+    }
+
+    /* ---- Hero tagline: keep each phrase intact, balance line lengths ---- */
+    .hero-tagline {
+        text-wrap: balance;
+        max-width: 60ch;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-tagline .phrase {
+        white-space: nowrap;
+    }
+
+    /* ---- Hero CTA buttons ---- */
+    .hero-cta {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .hero-cta .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1.4rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease;
+        border: 2px solid transparent;
+        line-height: 1.2;
+    }
+
+    .hero-cta .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px var(--shadow-color);
+    }
+
+    .hero-cta .btn-primary {
+        background: #2baa59;
+        color: #ffffff;
+        border-color: #2baa59;
+    }
+
+    .hero-cta .btn-primary:hover {
+        background: #249a4f;
+        border-color: #249a4f;
+    }
+
+    .hero-cta .btn-secondary {
+        background: transparent;
+        color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    .hero-cta .btn-secondary:hover {
+        background: var(--accent-color);
+        color: #ffffff;
+    }
+
+    .hero-github {
+        margin-top: 1.2rem;
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* ---- SystemVerilog vs Veryl comparison table ---- */
+    /* Stacks vertically while the TOC sidebar is still visible.
+       juice theme: main has 100px horizontal padding, .toc is ~240px,
+       so at viewport < 1200px the content area is < ~760px and two code
+       columns no longer fit side-by-side without clipping. */
+    .sv-compare {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 1.5rem;
+        table-layout: fixed;
+    }
+
+    .sv-compare th {
+        text-align: left;
+        font-weight: 700;
+        padding: 0.4rem 0.6rem;
+        border-bottom: 2px solid var(--accent-color);
+        color: var(--primary-text-color);
+        width: 50%;
+    }
+
+    .sv-compare td {
+        vertical-align: top;
+        padding: 0.5rem 0.6rem;
+        width: 50%;
+    }
+
+    .sv-compare td > pre {
+        margin: 0;
+    }
+
+    @media screen and (max-width: 1200px) {
+        /* Interleave DOM order (th, th, td, td) into visual order
+           (SV header, SV code, Veryl header, Veryl code) via flex order. */
+        .sv-compare {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .sv-compare thead,
+        .sv-compare tbody,
+        .sv-compare tr {
+            display: contents;
+        }
+        .sv-compare th,
+        .sv-compare td {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .sv-compare th {
+            margin-top: 0.8rem;
+            padding: 0.4rem 0;
+        }
+        .sv-compare td {
+            padding: 0.2rem 0 0.6rem;
+        }
+        .sv-compare tr:first-child > :first-child { order: 1; }
+        .sv-compare tr:last-child  > :first-child { order: 2; }
+        .sv-compare tr:first-child > :last-child  { order: 3; }
+        .sv-compare tr:last-child  > :last-child  { order: 4; }
     }
 </style>

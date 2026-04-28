@@ -1,15 +1,16 @@
 {% extends "juice/templates/page.html" %}
 {% block head %}
+{% set ogp_image = get_url(path="ogp/" ~ page.slug ~ ".png") %}
 <meta property="og:url" content="{{ page.permalink | safe }}" />
 <meta property="og:title" content="{{ page.title }}" />
 <meta property="og:description" content="{{ page.content | striptags | truncate(length=90) }}" />
-<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+<meta property="og:image" content="{{ ogp_image | safe }}" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="veryl-lang.org" />
 <meta name="twitter:title" content="{{ page.title }}" />
 <meta name="twitter:description" content="{{ page.content | striptags | truncate(length=90) }}" />
-<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+<meta name="twitter:image" content="{{ ogp_image | safe }}" />
 {% endblock head %}
 
 {% block content %}

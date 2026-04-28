@@ -1,34 +1,50 @@
 {% extends "juice/templates/index.html" %}
 {% block head %}
+{% set ogp_slug = "index" %}
+{% if page %}
+  {% set ogp_slug = page.slug %}
+{% elif section and section.path and section.path != "/" %}
+  {% set ogp_slug = section.path | trim_start_matches(pat="/") | trim_end_matches(pat="/") | replace(from="/", to="-") %}
+{% endif %}
+{% set ogp_image = get_url(path="ogp/" ~ ogp_slug ~ ".png") %}
 <meta property="og:url" content="{{ section.permalink | safe }}" />
 <meta property="og:title" content="Veryl: A Modern Hardware Description Language" />
 <meta property="og:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
-<meta property="og:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+<meta property="og:image" content="{{ ogp_image | safe }}" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:domain" content="veryl-lang.org" />
 <meta name="twitter:title" content="Veryl: A Modern Hardware Description Language" />
 <meta name="twitter:description" content="Veryl is a hardware description language which is designed as a SystemVerilog alternative." />
-<meta name="twitter:image" content="https://github.com/veryl-lang/veryl/raw/master/support/logo/veryl_ogp.png" />
+<meta name="twitter:image" content="{{ ogp_image | safe }}" />
 {% endblock head %}
 {% block hero %}
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <section class="text-center">
-    <h1 class="heading-text" style="font-size: 50px">
-        Veryl Hardware Description Language
+    <h1 class="heading-text" style="font-size: 50px; margin-bottom: 0.4rem;">
+        Veryl &mdash; a modern hardware description language.
     </h1>
-    <h3 class="title-text">
-        A modern hardware description language designed as SystemVerilog alternative.
+    <h3 class="title-text hero-tagline" style="margin-top: 0; font-weight: 400;">
+        <span class="phrase">Optimized syntax.</span>
+        <span class="phrase">SystemVerilog interoperability.</span>
+        <span class="phrase">Batteries-included tooling.</span>
     </h3>
 
-    <div>
+    <div class="hero-cta">
+        <a class="btn btn-primary" href="{{ get_url(path='@/install.md') | safe }}">Get Started</a>
+        <a class="btn btn-secondary" href="https://doc.veryl-lang.org/playground">Try Playground</a>
+    </div>
+
+    <div class="hero-github">
         <a class="github-button" href="https://github.com/veryl-lang/veryl" data-size="large" data-show-count="true"
             aria-label="Star veryl-lang/veryl on GitHub">Star</a>
         <a class="github-button" href="https://github.com/sponsors/dalance" data-size="large" data-icon="octicon-heart"
             aria-label="Sponsor @dalance on GitHub">Sponsor</a>
     </div>
 </section>
-<img class="hero-image" style="height: 80%" src="{{ get_url(path='code.png') }}">
+<div class="hero-code">
+{{ load_data(path="templates/hero-code.md") | markdown(inline=false) | safe }}
+</div>
 
 <div class="explore-more text" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
     Explore Veryl ⇩
@@ -38,13 +54,28 @@
         padding: 0 5rem;
     }
 
+    .hero-code {
+        max-width: 720px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .hero-code pre {
+        border-radius: 10px;
+        padding: 1.2rem 1.4rem;
+        margin: 0;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+        border-left: none;
+        overflow-x: auto;
+    }
+
     @media screen and (max-width: 768px) {
         .hero section {
             padding: 0 2rem;
         }
 
-        .hero-image {
-            display: none
+        .hero-code {
+            display: none;
         }
     }
 </style>

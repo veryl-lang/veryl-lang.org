@@ -237,6 +237,22 @@ module ModuleA (
 The standard library currently includes AXI3, AXI4, AXI4-Lite, and AXI-Stream interfaces.
 See the [standard library reference](https://std.veryl-lang.org) for the full list.
 
+## Logic synthesis support {#logic-synthesis}
+
+A built-in logic synthesis pass converts the analyzer IR into a gate-level IR and applies
+constant propagation, logic compression, and typical arithmetic construction (adders, multipliers).
+This lets designers check approximate timing critical paths and area without reaching for an
+external synthesizer.
+
+![Logic synthesis report demo](./img/synth.gif)
+
+## SystemVerilog translation {#sv-translation}
+
+A new `translate` command converts existing SystemVerilog sources into Veryl, smoothing the
+migration path from established SystemVerilog projects.
+
+![SystemVerilog to Veryl translation demo](./img/translate.gif)
+
 ## Generics {#generics}
 
 Code generation through generics achieves more reusable code than traditional parameter override.
@@ -289,6 +305,49 @@ always_comb {
 }
 ```
  
+</td>
+</tr>
+</table>
+
+## Type inference {#type-inference}
+
+The type of a `let` binding or `var` assignment can be inferred from the right-hand side
+or from function arguments. Generic type parameters are also inferred from call-site arguments
+when unambiguous, so explicit `::<...>` is no longer required in common cases.
+
+<table class="sv-compare">
+<tr>
+<th>Explicit</th>
+<th>Inferred</th>
+</tr>
+<tr>
+<td>
+
+```veryl
+var a: logic<8>;
+
+let b: logic<8> = a;
+let c: logic<8> = 8'd10;
+
+let d: logic<8> = Func(a);
+
+let e: logic<8> = GenericFunc::<8>(a);
+```
+
+</td>
+<td>
+
+```veryl
+var a: logic<8>;
+
+let b = a;
+let c = 8'd10;
+
+let d = Func(a);
+
+let e = GenericFunc(a);
+```
+
 </td>
 </tr>
 </table>

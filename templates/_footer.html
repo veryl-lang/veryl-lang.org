@@ -1,0 +1,69 @@
+<footer class="site-footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-col">
+            <div class="site-footer-heading">Project</div>
+            <a href="https://github.com/veryl-lang/veryl">GitHub</a>
+            <a href="https://github.com/sponsors/dalance">Sponsor</a>
+        </div>
+        <div class="site-footer-col">
+            <div class="site-footer-heading">Documentation</div>
+            <a href="https://doc.veryl-lang.org/book/">Book</a>
+            <a href="https://doc.veryl-lang.org/playground">Playground</a>
+        </div>
+        <div class="site-footer-col">
+            <div class="site-footer-heading">Community</div>
+            <a href="https://discord.gg/MJZr9NufTT">Discord</a>
+            <a href="{{ get_url(path='@/blog/_index.md') | safe }}">Blog</a>
+        </div>
+    </div>
+    <div class="site-footer-bottom subtext">
+        Veryl is dual-licensed under MIT or Apache-2.0. © 2022–{{ now() | date(format="%Y") }} Veryl contributors.
+    </div>
+</footer>
+<style>
+    .site-footer {
+        margin-top: 4rem;
+        padding: 3rem 2rem 2rem;
+        border-top: 1px solid var(--border-color);
+        background-color: var(--toc-background-color);
+    }
+    .site-footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+    }
+    .site-footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    .site-footer-heading {
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        color: var(--primary-text-color);
+    }
+    .site-footer a {
+        color: var(--secondary-text-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+    .site-footer a:hover {
+        color: var(--primary-link-color);
+    }
+    .site-footer-bottom {
+        max-width: 1100px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    @media screen and (max-width: 640px) {
+        .site-footer-inner {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+</style>

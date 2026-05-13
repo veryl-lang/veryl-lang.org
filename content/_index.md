@@ -148,14 +148,14 @@ module ModuleA {
 Issues such as undefined, unused, or unassigned variables are notified in real-time while editing in the editor.
 In the following example, adding the `_` prefix to variables flagged as unused explicitly indicates their unused status, suppressing warnings.
 
-![Real-time diagnostics demo](./img/diagnostics.gif)
+<img src="./img/diagnostics.gif" alt="Real-time diagnostics demo" loading="lazy" />
 
 ## Auto formatting {#auto-formatting}
 
 In addition to the automatic formatting feature integrated with the editor,
 formatting through the command line and formatting checks in CI are also possible.
 
-![Auto formatting demo](./img/format.gif)
+<img src="./img/format.gif" alt="Auto formatting demo" loading="lazy" />
 
 ## Integrated test {#integrated-test}
 
@@ -244,14 +244,14 @@ constant propagation, logic compression, and typical arithmetic construction (ad
 This lets designers check approximate timing critical paths and area without reaching for an
 external synthesizer.
 
-![Logic synthesis report demo](./img/synth.gif)
+<img src="./img/synth.gif" alt="Logic synthesis report demo" loading="lazy" />
 
 ## SystemVerilog translation {#sv-translation}
 
 A new `translate` command converts existing SystemVerilog sources into Veryl, smoothing the
 migration path from established SystemVerilog projects.
 
-![SystemVerilog to Veryl translation demo](./img/translate.gif)
+<img src="./img/translate.gif" alt="SystemVerilog to Veryl translation demo" loading="lazy" />
 
 ## Generics {#generics}
 

@@ -1,5 +1,7 @@
 # The URL the site will be built for
 base_url = "https://veryl-lang.org"
+title = "Veryl"
+description = "Veryl is a hardware description language which is designed as a SystemVerilog alternative."
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true

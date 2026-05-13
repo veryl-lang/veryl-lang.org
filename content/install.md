@@ -1,6 +1,6 @@
 +++
 title = "Install"
-description = "Install"
+description = "Install Veryl through the verylup toolchain installer, Cargo, or by building from source."
 weight = 1
 +++
 

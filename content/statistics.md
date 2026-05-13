@@ -1,6 +1,6 @@
 +++
 title = "Statistics"
-description = "Statistics"
+description = "Adoption statistics for Veryl: projects on GitHub and release download counts over time."
 weight = 4
 +++
 

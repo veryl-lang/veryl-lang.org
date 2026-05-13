@@ -1,6 +1,6 @@
 +++
 title = "Docs"
-description = "Docs"
+description = "Documentation, language references, and academic publications about the Veryl hardware description language."
 weight = 2
 +++
 

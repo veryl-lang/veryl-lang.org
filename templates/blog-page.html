@@ -21,6 +21,35 @@
 <meta name="twitter:title" content="{{ page.title }} | Veryl" />
 <meta name="twitter:description" content="{{ meta_description }}" />
 <meta name="twitter:image" content="{{ ogp_image | safe }}" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | json_encode | safe }},
+  "datePublished": "{{ page.date }}",
+  "url": "{{ page.permalink | safe }}",
+  "image": "{{ ogp_image | safe }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Veryl team",
+    "url": "https://github.com/veryl-lang/veryl"
+  },
+  "publisher": {
+    "@id": "{{ config.base_url | safe }}/#organization",
+    "@type": "Organization",
+    "name": "Veryl",
+    "url": "{{ config.base_url | safe }}/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ config.base_url | safe }}/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.permalink | safe }}"
+  }
+}
+</script>
 {% endblock head %}
 
 {% block content %}

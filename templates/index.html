@@ -27,6 +27,46 @@
 <meta name="twitter:title" content="{{ meta_title }}" />
 <meta name="twitter:description" content="{{ meta_description }}" />
 <meta name="twitter:image" content="{{ ogp_image | safe }}" />
+{% if section and section.path == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ config.base_url | safe }}/#website",
+      "url": "{{ config.base_url | safe }}/",
+      "name": "Veryl",
+      "description": {{ config.description | json_encode | safe }},
+      "inLanguage": "en",
+      "publisher": { "@id": "{{ config.base_url | safe }}/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "{{ config.base_url | safe }}/#organization",
+      "name": "Veryl",
+      "url": "{{ config.base_url | safe }}/",
+      "logo": "{{ config.base_url | safe }}/logo.png",
+      "sameAs": "https://github.com/veryl-lang/veryl"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Veryl",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, macOS, Windows",
+      "url": "{{ config.base_url | safe }}/",
+      "codeRepository": "https://github.com/veryl-lang/veryl",
+      "description": {{ config.description | json_encode | safe }},
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  ]
+}
+</script>
+{% endif %}
 {% endblock head %}
 {% block hero %}
 <script async defer src="https://buttons.github.io/buttons.js"></script>

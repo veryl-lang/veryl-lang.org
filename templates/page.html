@@ -10,6 +10,7 @@
 <meta name="description" content="{{ meta_description }}" />
 <link rel="canonical" href="{{ page.permalink | safe }}" />
 
+<meta property="og:type" content="website" />
 <meta property="og:url" content="{{ page.permalink | safe }}" />
 <meta property="og:title" content="{{ page.title }} | Veryl" />
 <meta property="og:description" content="{{ meta_description }}" />
@@ -21,3 +22,8 @@
 <meta name="twitter:description" content="{{ meta_description }}" />
 <meta name="twitter:image" content="{{ ogp_image | safe }}" />
 {% endblock head %}
+
+{% block content %}
+<h1 class="heading-text">{{ page.title }}</h1>
+{{ page.content | safe }}
+{% endblock content %}

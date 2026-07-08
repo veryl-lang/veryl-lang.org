@@ -4,10 +4,20 @@ description = "Organizations and services supporting the Veryl hardware descript
 weight = 5
 +++
 
-Veryl is an open-source project that relies on the generous support of the following organizations.
+Veryl is an open-source project sustained by the generous support of its sponsors and backers.
 We are grateful to everyone who helps keep the project moving forward.
 
-# Organizations
+# Sponsors & Backers
+
+Individuals and organizations supporting Veryl through
+[Open Collective](https://opencollective.com/veryl).
+GitHub Sponsors support is coming soon.
+
+<a href="https://opencollective.com/veryl" target="_blank" rel="noopener">
+  <img src="/img/sponsors.svg" alt="Veryl sponsors and backers" style="max-width: 100%;" />
+</a>
+
+# In-Kind Sponsors
 
 <div class="sponsor-grid">
   <a class="sponsor-card" href="https://codspeed.io/?utm_source=veryl-lang&utm_medium=readme" target="_blank" rel="noopener">
@@ -70,9 +80,19 @@ We are grateful to everyone who helps keep the project moving forward.
   }
 </style>
 
-# Become a sponsor
+# Support Veryl
 
-Individual sponsorships are accepted through GitHub Sponsors.
-If you or your organization would like to support Veryl, please get in touch via the
-[GitHub Sponsors page](https://github.com/sponsors/dalance) or open an issue on the
+Veryl is free and open source. Your support helps cover the project's running costs &mdash;
+CI, infrastructure, and domains &mdash; and sustains its ongoing development.
+
+- **Individuals** can support Veryl through
+  [Open Collective](https://opencollective.com/veryl).
+- **Companies and organizations** can become a sponsor on
+  [Open Collective](https://opencollective.com/veryl) and have their logo featured above.
+
+GitHub Sponsors support is coming soon.
+
+Contributions are handled transparently through
+[Open Source Collective](https://opencollective.com/veryl), our fiscal host.
+You can also reach us on [Discord](https://discord.gg/MJZr9NufTT) or via the
 [main repository](https://github.com/veryl-lang/veryl).

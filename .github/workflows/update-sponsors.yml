@@ -2,9 +2,10 @@ name: Update Sponsors
 
 on:
   workflow_dispatch:
-  schedule:
-    # Daily at 00:00 UTC
-    - cron: '0 0 * * *'
+  # Re-enable the daily schedule once SPONSORKIT_OPENCOLLECTIVE_KEY is set as a
+  # repository secret (and there are backers to show).
+  # schedule:
+  #   - cron: '0 0 * * *'  # daily at 00:00 UTC
 
 permissions:
   contents: write
@@ -24,8 +25,13 @@ jobs:
         with:
           node-version: lts/*
 
-      - name: Generate unified sponsors image (GitHub Sponsors + Open Collective)
-        run: npx sponsorkit@latest
+      - name: Generate sponsors image (Open Collective)
+        # Install sponsorkit locally first: sponsor.config.ts does
+        # `import ... from 'sponsorkit'`, which a bare `npx sponsorkit` cannot
+        # resolve from the project directory.
+        run: |
+          npm install sponsorkit@latest
+          npx sponsorkit
         env:
           # PAT with `read:user` and `read:org` scopes.
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}

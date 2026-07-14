@@ -31,7 +31,10 @@ jobs:
         # resolve from the project directory.
         run: |
           npm install sponsorkit@latest
-          npx sponsorkit
+          # Tolerate a sponsorkit / Open Collective failure (e.g. no contributions
+          # yet, which currently makes the OpenCollective provider throw): keep the
+          # existing image instead of failing the job.
+          npx sponsorkit || echo "::warning title=sponsorkit::sponsorkit failed; keeping the current sponsors image"
         env:
           # PAT with `read:user` and `read:org` scopes.
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}

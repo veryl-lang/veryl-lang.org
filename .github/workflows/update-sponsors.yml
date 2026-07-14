@@ -2,10 +2,8 @@ name: Update Sponsors
 
 on:
   workflow_dispatch:
-  # Re-enable the daily schedule once SPONSORKIT_OPENCOLLECTIVE_KEY is set as a
-  # repository secret (and there are backers to show).
-  # schedule:
-  #   - cron: '0 0 * * *'  # daily at 00:00 UTC
+  schedule:
+    - cron: '0 0 * * *'  # daily at 00:00 UTC
 
 permissions:
   contents: write

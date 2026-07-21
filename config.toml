@@ -31,6 +31,7 @@ repository_url = "https://github.com/veryl-lang/veryl"
 juice_logo_name = ""
 juice_logo_path = "logo.png"
 juice_extra_menu = [
+    { title = "Registry", link = "https://registry.veryl-lang.org/"},
     { title = "Playground", link = "https://doc.veryl-lang.org/playground"},
 ]
 juice_extra_icon = [

@@ -10,8 +10,8 @@ We are grateful to everyone who helps keep the project moving forward.
 # Sponsors & Backers
 
 Individuals and organizations supporting Veryl through
+[GitHub Sponsors](https://github.com/sponsors/veryl-lang) and
 [Open Collective](https://opencollective.com/veryl).
-GitHub Sponsors support is coming soon.
 
 <a href="https://opencollective.com/veryl" target="_blank" rel="noopener">
   <img src="/img/sponsors.svg" alt="Veryl sponsors and backers" style="max-width: 100%;" />
@@ -85,12 +85,12 @@ GitHub Sponsors support is coming soon.
 Veryl is free and open source. Your support helps cover the project's running costs &mdash;
 CI, infrastructure, and domains &mdash; and sustains its ongoing development.
 
-- **Individuals** can support Veryl through
+- **Individuals** &mdash; support Veryl via
+  [GitHub Sponsors](https://github.com/sponsors/veryl-lang) or
   [Open Collective](https://opencollective.com/veryl).
-- **Companies and organizations** can become a sponsor on
-  [Open Collective](https://opencollective.com/veryl) and have their logo featured above.
-
-GitHub Sponsors support is coming soon.
+- **Companies and organizations** &mdash; become a sponsor via
+  [Open Collective](https://opencollective.com/veryl) or
+  [GitHub Sponsors](https://github.com/sponsors/veryl-lang) to have your logo featured above.
 
 Contributions are handled transparently through
 [Open Source Collective](https://opencollective.com/veryl), our fiscal host.

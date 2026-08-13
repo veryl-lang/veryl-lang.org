@@ -8,11 +8,13 @@ export default defineConfig({
   width: 800,
   renderer: 'tiers',
 
-  // GitHub Sponsors: coming soon. The veryl-lang org profile is pending GitHub
-  // approval; add the `github` provider back here once it is live:
-  //   github: { login: 'veryl-lang', type: 'organization' }
-  // (token via SPONSORKIT_GITHUB_TOKEN, scopes read:user + read:org).
-  // For now only Open Collective is fetched.
+  // GitHub Sponsors (organization account).
+  // The token is provided via the SPONSORKIT_GITHUB_TOKEN environment
+  // variable and needs the `read:user` and `read:org` scopes.
+  github: {
+    login: 'veryl-lang',
+    type: 'organization',
+  },
 
   // Open Collective is configured via environment variables:
   //   SPONSORKIT_OPENCOLLECTIVE_KEY, SPONSORKIT_OPENCOLLECTIVE_SLUG=veryl

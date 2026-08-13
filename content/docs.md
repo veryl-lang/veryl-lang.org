@@ -28,3 +28,7 @@ weight = 2
   Veryl: SystemVerilogに代わる新しいハードウェア記述言語.
   October 2025. In: Design Solution Forum 2025.
   [[Slides]](veryl_dsf2025.pdf)
+* Naoya Hatta.
+  Design and Implementation of Veryl: A Hardware Description Language.
+  August 2026. In: IEICE Technical Report, vol. 126, no. 142, RECONF2026-17, pp. 1-6 (SWoPP 2026).
+  [[PDF]](veryl_swopp2026.pdf) [[Slides]](veryl_swopp2026-slide.pdf) [[IEICE]](https://ken.ieice.org/ken/paper/20260806Bcwi/)

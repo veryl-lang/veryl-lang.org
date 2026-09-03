@@ -31,8 +31,19 @@ export default defineConfig({
     sponsor.sponsor.login !== 'github-sponsors'
     && sponsor.sponsor.name !== 'GitHub Sponsors',
 
+  // Mirror the tiers offered on GitHub Sponsors ($1 and $100 a month). The
+  // first entry has no `monthlyDollars` and acts as the catch-all bucket that
+  // sponsorkit requires (exactly one tier must have none); leaving its title
+  // out keeps a heading for it from being rendered.
   tiers: [
-    { title: 'Backers', preset: tierPresets.base },
+    { preset: tierPresets.base },
+    { title: 'Backers', monthlyDollars: 1, preset: tierPresets.base },
     { title: 'Sponsors', monthlyDollars: 100, preset: tierPresets.large },
   ],
+
+  // Keep one-time sponsors visible for the number of months their payment
+  // covers at the lowest paid tier, rather than dropping them as soon as
+  // GitHub marks the sponsorship inactive. A $50 one-time payment stays in
+  // Backers ($1 a month) for 50 months, then ages out on its own.
+  prorateOnetime: true,
 })

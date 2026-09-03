@@ -18,8 +18,15 @@ text {
 <text x="400" y="40" text-anchor="middle" class="sponsorkit-tier-title">Backers</text><a href="https://opencollective.com/andy-burgess" class="sponsorkit-link" target="_blank" id="andy-burgess">
   
   <clipPath id="c0">
-    <rect x="380" y="65" width="40" height="40" rx="20" ry="20" />
+    <rect x="356" y="65" width="40" height="40" rx="20" ry="20" />
   </clipPath>
-  <image x="380" y="65" width="40" height="40" href="data:image/webp;base64,UklGRlIBAABXRUJQVlA4IEYBAAAwCACdASoyADIAPm0wlkekIqIhKBgKAIANiWUAVy74DbAbhHTAOlGX4FUT2USKy2pyYyd2qWHfw1aoY1TeQu/tPtaerOBU/BiUAAD++ziD9Wk0i8/cn6I0rnshBCKpyk84dxFS5XyVU0JSlw//omEoiePUDg11trZO7svHvDfQhU+vBu/64957mlGjQUoULr6v58FWs6+coRBvzzPYwbpsKut8/3fxOqnK64I6TWIUwV3qphJM8HgTNbfuCpvRPXrZ4X8tNheDH9ulMiFjQJQLEJ3ui3Nx/KaL/F6zco/XbO5IJtm893j6shCwGb2RS2/MMGLT8VZVO2VtTOeXb+0npl5YIGcFhfIhkXMTjFJ7RFvmy5SSqfiUiHNpW1wFdfe0NOkXbiyZf89hOT5wmra4JDkpbwOF0e8jcos/B/Z4hx1AkAAAAA==" clip-path="url(#c0)"/>
+  <image x="356" y="65" width="40" height="40" href="data:image/webp;base64,UklGRlIBAABXRUJQVlA4IEYBAAAwCACdASoyADIAPm0wlkekIqIhKBgKAIANiWUAVy74DbAbhHTAOlGX4FUT2USKy2pyYyd2qWHfw1aoY1TeQu/tPtaerOBU/BiUAAD++ziD9Wk0i8/cn6I0rnshBCKpyk84dxFS5XyVU0JSlw//omEoiePUDg11trZO7svHvDfQhU+vBu/64957mlGjQUoULr6v58FWs6+coRBvzzPYwbpsKut8/3fxOqnK64I6TWIUwV3qphJM8HgTNbfuCpvRPXrZ4X8tNheDH9ulMiFjQJQLEJ3ui3Nx/KaL/F6zco/XbO5IJtm893j6shCwGb2RS2/MMGLT8VZVO2VtTOeXb+0npl5YIGcFhfIhkXMTjFJ7RFvmy5SSqfiUiHNpW1wFdfe0NOkXbiyZf89hOT5wmra4JDkpbwOF0e8jcos/B/Z4hx1AkAAAAA==" clip-path="url(#c0)"/>
+</a>
+<a href="https://github.com/Huck-Finn" class="sponsorkit-link" target="_blank" id="Huck-Finn">
+  
+  <clipPath id="c1">
+    <rect x="404" y="65" width="40" height="40" rx="20" ry="20" />
+  </clipPath>
+  <image x="404" y="65" width="40" height="40" href="data:image/webp;base64,UklGRjQBAABXRUJQVlA4ICgBAABQCQCdASoyADIAPm0wlEWkIyIYDPyAQAbEoAzWLAHOAbgDdAP7t1AHPaezj+0oKvsOSMVGkAOSYZUgO0gZLSj91rHBaj2xMbhVTs0iVtMgQSfZwAD+/fcX/sW3Xfs/UM8eV1fw5SucD2p+hlaeBwk1je9jxbvcP0bAdtyCs14flqcBph+/XM+nSNTX0rbVjjQPtfDT1DTT+MgBVsxsVisvBSXQ0fKw/ycuWDNTEYmjeEWSmG+3Id2K2S8IPhjlgLtH3O4FewJYakuNkkP1nBzz5zkcXST/RoIVzaIH7jYi4nE9lXzDNrJJ1u7H87c43ubAzY2C/gPCXRb6BYyAWvJZ6ugHxiTXTnSLPiTMxJgHMlcOjJXkUBLYyBTYKBovvOcCiQNETwAAAA==" clip-path="url(#c1)"/>
 </a>
 </svg>

@@ -1,6 +1,6 @@
 +++
 title = "Sponsors"
-description = "Organizations and services supporting the Veryl hardware description language project."
+description = "Individuals, organizations, and services supporting the Veryl hardware description language project."
 weight = 5
 +++
 

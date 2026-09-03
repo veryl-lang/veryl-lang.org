@@ -80,7 +80,7 @@ def collect_pages() -> list[Page]:
         "install": "Install Veryl with the verylup toolchain installer",
         "docs": "Reference, tutorials, and the playground",
         "statistics": "GitHub activity, releases, and adoption",
-        "sponsors": "Organizations supporting the Veryl project",
+        "sponsors": "Individuals and organizations supporting Veryl",
     }
     for md in sorted(CONTENT.glob("*.md")):
         if md.name == "_index.md":

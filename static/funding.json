@@ -1,0 +1,89 @@
+{
+  "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+  "version": "v1.1.0",
+  "entity": {
+    "type": "group",
+    "role": "owner",
+    "name": "Veryl",
+    "email": "dalance@gmail.com",
+    "description": "Veryl is a hardware description language designed as a modern alternative to SystemVerilog. Funds are received through GitHub Sponsors and Open Collective, and are held transparently by Open Source Collective, our fiscal host.",
+    "webpageUrl": {
+      "url": "https://veryl-lang.org/"
+    }
+  },
+  "projects": [
+    {
+      "guid": "veryl",
+      "name": "Veryl",
+      "description": "A hardware description language that compiles to SystemVerilog, with an optimized syntax, interoperability with SystemVerilog, and a productive toolchain including a compiler, formatter, linter, language server, package manager, and simulator.",
+      "webpageUrl": {
+        "url": "https://veryl-lang.org/"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/veryl-lang/veryl",
+        "wellKnown": "https://github.com/veryl-lang/veryl/blob/master/.well-known/funding-manifest-urls"
+      },
+      "licenses": ["spdx:MIT", "spdx:Apache-2.0"],
+      "tags": ["hardware", "hdl", "systemverilog", "fpga", "asic", "compiler", "programming-language", "developer-tools"]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/veryl-lang",
+        "description": "GitHub Sponsors for the veryl-lang organization."
+      },
+      {
+        "guid": "open-collective",
+        "type": "payment-provider",
+        "address": "https://opencollective.com/veryl",
+        "description": "Open Collective, hosted by Open Source Collective."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "backer",
+        "status": "active",
+        "name": "Backer",
+        "description": "Monthly support from individuals.",
+        "amount": 1,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "backer-oc",
+        "status": "active",
+        "name": "Backer (Open Collective)",
+        "description": "Monthly support from individuals via Open Collective.",
+        "amount": 5,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["open-collective"]
+      },
+      {
+        "guid": "sponsor",
+        "status": "active",
+        "name": "Sponsor",
+        "description": "Monthly support from companies and organizations, with the logo featured on the sponsors page.",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors", "open-collective"]
+      },
+      {
+        "guid": "one-time",
+        "status": "active",
+        "name": "One-time donation",
+        "description": "A one-time contribution of any amount.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["github-sponsors", "open-collective"]
+      }
+    ],
+    "history": []
+  }
+}

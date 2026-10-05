@@ -30,6 +30,16 @@ Individuals and organizations supporting Veryl through
       </div>
     </div>
   </a>
+  <a class="sponsor-card" href="https://www.docker.com/community/open-source/" target="_blank" rel="noopener">
+    <img class="sponsor-logo" src="/img/docker-logo.png" alt="Docker" />
+    <div class="sponsor-body">
+      <div class="sponsor-name">Docker</div>
+      <div class="sponsor-desc">
+        Docker supports Veryl through the Docker-Sponsored Open Source program,
+        which provides benefits such as unlimited image pulls for our official Docker images.
+      </div>
+    </div>
+  </a>
 </div>
 
 <style>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 Not Found | Veryl</title>
+<meta name="robots" content="noindex">
+<link rel="shortcut icon" type="image/x-icon" href="/logo.png">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "9a6e16a10083416fbafbabf6f917fd9e"}'></script>
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: #fcfaf6;
+        color: #24262a;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    a { color: #24262a; text-decoration: none; }
+    a:hover { color: #d46e13; }
+
+    .nav-404 {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #e4e7ec;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .nav-404 .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+    .nav-404 .brand img { height: 32px; width: auto; display: block; }
+    .nav-404 .spacer { flex: 1; }
+    .nav-404 .links { display: flex; gap: 1.5rem; }
+
+    main.content-404 {
+        flex: 1;
+        max-width: 560px;
+        width: 100%;
+        margin: 5rem auto 4rem;
+        padding: 0 2rem;
+        text-align: center;
+    }
+    .content-404 .code {
+        font-size: 6rem;
+        font-weight: 700;
+        color: #2baa59;
+        margin: 0 0 1rem;
+        line-height: 1;
+    }
+    .content-404 h1 {
+        font-size: 1.75rem;
+        margin: 0 0 0.75rem;
+        font-weight: 600;
+    }
+    .content-404 .desc {
+        color: #5f6b7a;
+        font-size: 1.05rem;
+        margin: 0 0 2.5rem;
+    }
+    .actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .actions a {
+        display: inline-block;
+        padding: 0.65rem 1.4rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+    .actions .btn-primary {
+        background: #2baa59;
+        color: #ffffff;
+    }
+    .actions .btn-primary:hover {
+        background: #248f4a;
+        color: #ffffff;
+    }
+    .actions .btn-secondary {
+        background: transparent;
+        color: #24262a;
+        border: 1px solid #e4e7ec;
+    }
+    .actions .btn-secondary:hover {
+        border-color: #2baa59;
+        color: #2baa59;
+    }
+
+    @media screen and (max-width: 540px) {
+        .nav-404 .links { gap: 1rem; font-size: 0.9rem; }
+        .content-404 .code { font-size: 4.5rem; }
+    }
+</style>
+</head>
+<body>
+<nav class="nav-404">
+    <a class="brand" href="/"><img src="/logo.png" alt="Veryl"><span>Veryl</span></a>
+    <span class="spacer"></span>
+    <span class="links">
+        <a href="/install/">Install</a>
+        <a href="/docs/">Docs</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://github.com/veryl-lang/veryl">GitHub</a>
+    </span>
+</nav>
+<main class="content-404">
+    <p class="code">404</p>
+    <h1>Page not found</h1>
+    <p class="desc">The page you requested doesn't exist. It may have moved, or never existed in the first place.</p>
+    <div class="actions">
+        <a class="btn-primary" href="/">Go to homepage</a>
+        <a class="btn-secondary" href="/blog/">Browse the blog</a>
+    </div>
+</main>
+</body>
+</html>
